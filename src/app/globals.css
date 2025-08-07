@@ -1,8 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Fondos principales */
+  --background: #0d1b2a;           /* Azul marino oscuro */
+  --foreground: #e0eefd;           /* Blanco azulado para texto */
+
+  /* Colores principales */
+  --primary: #3a86ff;              /* Azul vivo y luminoso */
+  --primary-dark: #1a2a40;         /* Azul muy oscuro */
+  --secondary: #27496d;            /* Azul medio/oscuro */
+  --accent: #00b4d8;               /* Azul cyan vibrante */
+  
+  /* Timeline (nuevo para línea, puntos y flechas) */
+  --timeline: #8ec2f9;             /* Azul claro-medio para líneas/puntos */
+  --timeline-text: #456ba4;        /* Azul medio para flechas */
+
+  /* Fondos para cards y paneles */
+  --card: #112f4a;                 /* Azul océano oscuro */
+  --panel: #1b4965;                /* Azul oceánico medio */
+
+  /* Textos secundarios y terciarios */
+  --text-secondary: #a0c4ff;       /* Azul clarito suave */
+  --text-tertiary: #b8daff;        /* Azul muy pálido */
+
+  /* Botones */
+  --button-primary-bg: #3a86ff;
+  --button-primary-hover: #265dab;
+
+  --button-secondary-bg: #27496d;
+  --button-secondary-hover: #1a365d;
+
+  --button-alt-bg: #e0eefd;
+  --button-alt-hover: #c3daf9;
+  --button-alt-text: #27496d;
 }
 
 @theme inline {
@@ -12,15 +42,79 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* Fondo principal con gradiente azul/blanco */
+body {
+  min-height: 100vh;
+  background: linear-gradient(120deg, #ffffff 0%, #3a86ff 50%, #27496d 100%);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
+  transition: background 0.3s, color 0.3s;
+}
+
+/* En modo claro, fondo blanco y texto azul oscuro */
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #27496d;
+    --card: #f0f7ff;
+    --panel: #d0e4ff;
+    --timeline: #3a86ff;            /* Ajusta para mejor contraste en fondo claro */
+    --timeline-text: #27496d;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Utilidades Tailwind/CSS personalizadas */
+.bg-background       { background-color: var(--background) !important; }
+.bg-primary          { background-color: var(--primary) !important; }
+.bg-secondary        { background-color: var(--secondary) !important; }
+.bg-card             { background-color: var(--card) !important; }
+.bg-panel            { background-color: var(--panel) !important; }
+
+.text-foreground     { color: var(--foreground) !important; }
+.text-primary        { color: var(--primary) !important; }
+.text-secondary      { color: var(--secondary) !important; }
+.text-accent         { color: var(--accent) !important; }
+
+.text-secondary-soft { color: var(--text-secondary) !important; }
+.text-tertiary       { color: var(--text-tertiary) !important; }
+
+/* Timeline colores personalizados */
+/* Aplica estas clases en la línea central, puntos y flechas del timeline */
+.bg-timeline         { background-color: var(--timeline) !important; }
+.flag-timeline       { color: var(--timeline) !important; }
+.text-timeline       { color: var(--timeline-text) !important; }
+.bg-primary-dark     { background-color: var(--primary-dark) !important; }
+.text-main-dark      { color: var(--primary-dark) !important; }
+
+/* Botones */
+.bg-button-primary            { background-color: var(--button-primary-bg) !important; }
+.bg-button-primary:hover      { background-color: var(--button-primary-hover) !important; }
+
+.bg-button-secondary          { background-color: var(--button-secondary-bg) !important; }
+.bg-button-secondary:hover    { background-color: var(--button-secondary-hover) !important; }
+
+.bg-button-alt                { background-color: var(--button-alt-bg) !important; color: var(--button-alt-text) !important; }
+.bg-button-alt:hover          { background-color: var(--button-alt-hover) !important; }
+
+/* Animación cursor */
+@keyframes blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
 }
+.animate-blink {
+  animation: blink 1s steps(1, start) infinite;
+}
+
+/* Otras utilidades de texto según paleta */
+.text-main-dark      { color: var(--primary-dark) !important; }
+.text-secondary      { color: var(--secondary) !important; }
+.text-foreground     { color: var(--foreground) !important; }
