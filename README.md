@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Personal - Alejandro Viñola
 
-## Getting Started
+## 🌐 Sobre este proyecto
 
-First, run the development server:
+Este portfolio personal es una vitrina digital que reúne mi experiencia profesional, habilidades y proyectos desarrollados. Ha sido construido para mostrar de forma moderna, accesible y profesional quién soy como desarrollador full stack.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 Motivación
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Decidí desarrollar este portfolio como una oportunidad para:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Experimentar con tecnologías modernas y actuales.
+- Adoptar buenas prácticas de desarrollo web.
+- Mejorar la experiencia del usuario y la optimización del sitio.
+- Disponer de un espacio profesional propio que pueda escalar con el tiempo.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🛠️ Tecnologías utilizadas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Herramienta                | Versión      | Descripción                                                                 |
+|---------------------------|--------------|-----------------------------------------------------------------------------|
+| **Next.js**               | 15.4.5       | Framework React con renderizado híbrido (SSR, SSG, ISR) y App Router.      |
+| **React**                 | 19.1.0       | Librería para construir interfaces declarativas y reactivas.               |
+| **TypeScript**            | ^5           | Tipado estático para código más robusto y mantenible.                      |
+| **Tailwind CSS**          | ^4           | Framework de clases utilitarias para un diseño moderno y responsivo.       |
+| **Next.js Image Component**| -           | Optimización de imágenes integrada, mejorando rendimiento y SEO.           |
+| **react-select**          | 5.10.2       | Selector de idiomas con banderas e interfaz intuitiva.                     |
+| **EmailJS**               | 4.4.1        | Envío de correos desde el frontend sin backend propio.                      |
+| **React Icons**           | 5.5.0        | Iconos vectoriales para UI coherente y atractiva.                          |
+| **Lottie React**          | 2.4.1        | Animaciones JSON interactivas y ligeras.                                   |
+| **React Type Animation**  | 3.2.0        | Efectos de escritura en texto animado.                                     |
+| **flag-icons**            | 7.5.0        | Iconos de banderas para experiencia multilingüe.                           |
+| **Vercel**                | -            | Despliegue, hosting y manejo de variables de entorno seguro.               |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📈 Aprendizajes y mejoras clave
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Gestión avanzada del estado y lógica cliente/servidor para evitar problemas de **hidratación** en Next.js.
+- Implementación de buenas prácticas de **SEO** y **accesibilidad** (metadatos, roles, atributos ARIA).
+- Optimización del rendimiento y carga de recursos (Core Web Vitals, imágenes, rendering).
+- Código modular y limpio con **TypeScript**, facilitando el mantenimiento y escalabilidad.
+- Interfaz consistente y fluida gracias a **Tailwind CSS** y componentes reutilizables.
+- Uso profesional de **Vercel** con CI/CD, preview deploys y control de entorno.
+- Estructura base preparada para añadir futuras secciones como:
+  - Certificaciones
+  - Servicios freelance
+  - Portfolio de diseño o contenido audiovisual
+  - Idiomas
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📫 ¡Gracias por visitar mi portfolio!
+
+Si tienes cualquier pregunta, idea o colaboración en mente, no dudes en escribirme a través del formulario de contacto del sitio.
+
+---
