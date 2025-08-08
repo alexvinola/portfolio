@@ -32,7 +32,7 @@ Decidí desarrollar este portfolio como una oportunidad para:
 | **Lottie React**          | 2.4.1        | Animaciones JSON interactivas y ligeras.                                   |
 | **React Type Animation**  | 3.2.0        | Efectos de escritura en texto animado.                                     |
 | **flag-icons**            | 7.5.0        | Iconos de banderas para experiencia multilingüe.                           |
-| **Vercel**                | -            | Despliegue, hosting y manejo de variables de entorno seguro.               |
+| **AWS**                | -            | Despliegue, hosting y manejo de variables de entorno seguro.               |
 
 ---
 
