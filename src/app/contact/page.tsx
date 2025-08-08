@@ -4,24 +4,44 @@ import { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_CF_TURNSTILE_SITE_KEY || "";
+const ENABLE_TURNSTILE = process.env.NEXT_PUBLIC_ENABLE_TURNSTILE === "true";
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const turnstileContainerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handler = (event: Event) => {
-      const customEvent = event as CustomEvent<string>;
-      setTurnstileToken(customEvent.detail);
-    };
+useEffect(() => {
+  if (!ENABLE_TURNSTILE) {
+    setTurnstileToken("bypass");
+    return;
+  }
+  // Limpiar el contenedor antes de renderizar
+  if (turnstileContainerRef.current) {
+    turnstileContainerRef.current.innerHTML = "";
+  }
+  // Renderizar solo si no hay widget presente
+  const renderTurnstile = () => {
+    if (window.turnstile && turnstileContainerRef.current) {
+      window.turnstile.render(turnstileContainerRef.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: setTurnstileToken,
+        "error-callback": () => setTurnstileToken(null),
+        "expired-callback": () => setTurnstileToken(null),
+      });
+    }
+  };
+  if (window.turnstile) {
+    renderTurnstile();
+  } else {
+    const handleTurnstileReady = () => renderTurnstile();
+    window.addEventListener("turnstile-ready", handleTurnstileReady);
+    return () => window.removeEventListener("turnstile-ready", handleTurnstileReady);
+  }
+}, []);
 
-    window.addEventListener("turnstile-verified", handler);
-    return () => {
-      window.removeEventListener("turnstile-verified", handler);
-    };
-  }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,11 +64,13 @@ export default function Contact() {
       return;
     }
 
-    // Verificar que el token Turnstile está presente
-    if (!turnstileToken) {
+    // Si Turnstile está activado, validar que haya token; si está desactivado, saltar esta validación
+    if (ENABLE_TURNSTILE && !turnstileToken) {
       setResult({ success: false, message: "Please complete the CAPTCHA challenge." });
       return;
     }
+
+    
 
     setSending(true);
     setResult(null);
@@ -60,17 +82,18 @@ export default function Contact() {
         form,
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ""
       )
-      .then(
-        () => {
-          setResult({ success: true, message: "Message sent! 🎉" });
-          form.reset();
-          setTurnstileToken(null); // Reset CAPTCHA para siguiente envío
-        },
-        (error) => {
-          console.error("EmailJS error:", error);
-          setResult({ success: false, message: "Failed to send message. Try again later." });
+      .then(() => {
+        setResult({ success: true, message: "Message sent! 🎉" });
+        form.reset();
+        setTurnstileToken(ENABLE_TURNSTILE ? null : "bypass");
+        if (ENABLE_TURNSTILE && window.turnstile && turnstileContainerRef.current) {
+          window.turnstile.reset(turnstileContainerRef.current);
         }
-      )
+      })
+      .catch((error) => {
+        console.error("EmailJS error:", error);
+        setResult({ success: false, message: "Failed to send message. Try again later." });
+      })
       .finally(() => {
         setSending(false);
       });
@@ -82,9 +105,7 @@ export default function Contact() {
       <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-6" noValidate>
         {/* Nombre */}
         <div className="flex flex-col">
-          <label htmlFor="name" className="mb-2 font-semibold text-secondary">
-            Name
-          </label>
+          <label htmlFor="name" className="mb-2 font-semibold text-secondary">Name</label>
           <input
             type="text"
             id="name"
@@ -97,9 +118,7 @@ export default function Contact() {
         </div>
         {/* Email */}
         <div className="flex flex-col">
-          <label htmlFor="email" className="mb-2 font-semibold text-secondary">
-            Email
-          </label>
+          <label htmlFor="email" className="mb-2 font-semibold text-secondary">Email</label>
           <input
             type="email"
             id="email"
@@ -112,9 +131,7 @@ export default function Contact() {
         </div>
         {/* Asunto */}
         <div className="flex flex-col">
-          <label htmlFor="subject" className="mb-2 font-semibold text-secondary">
-            Subject
-          </label>
+          <label htmlFor="subject" className="mb-2 font-semibold text-secondary">Subject</label>
           <input
             type="text"
             id="subject"
@@ -127,9 +144,7 @@ export default function Contact() {
         </div>
         {/* Mensaje */}
         <div className="flex flex-col">
-          <label htmlFor="message" className="mb-2 font-semibold text-secondary">
-            Message
-          </label>
+          <label htmlFor="message" className="mb-2 font-semibold text-secondary">Message</label>
           <textarea
             id="message"
             name="message"
@@ -141,16 +156,17 @@ export default function Contact() {
           />
         </div>
 
-        {/* Campo oculto para enviar el token al backend/EmailJS */}
+        {/* Campo oculto con token Turnstile para EmailJS */}
         <input type="hidden" name="cf_turnstile_token" value={turnstileToken || ""} />
 
-        {/* Widget Turnstile */}
-        <div
-          className="cf-turnstile"
-          data-sitekey={TURNSTILE_SITE_KEY}
-          data-callback="onTurnstileSuccess"
-          style={{ width: "100%", height: "80px" }}
-        ></div>
+        {/* Renderizar captcha solo si está habilitado */}
+        {ENABLE_TURNSTILE && (
+          <div
+            ref={turnstileContainerRef}
+            style={{ width: "100%", height: 80 }}
+            className="flex justify-center"
+          />
+        )}
 
         {/* Botón enviar */}
         <button
@@ -161,30 +177,17 @@ export default function Contact() {
           {sending ? "Sending..." : "Send"}
         </button>
       </form>
-
       {/* Mensaje resultado */}
       {result && (
-        <p
-          className={`mt-4 text-center font-semibold ${
-            result.success ? "text-green-400" : "text-red-500"
-          }`}
-        >
+        <p className={`mt-4 text-center font-semibold ${result.success ? "text-green-400" : "text-red-500"}`}>
           {result.message}
         </p>
       )}
 
-      {/* Script de Turnstile */}
-      <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            function onTurnstileSuccess(token) {
-              const event = new CustomEvent('turnstile-verified', { detail: token });
-              window.dispatchEvent(event);
-            }
-          `,
-        }}
-      />
+      {/* Cargar script Turnstile solo si está habilitado */}
+      {ENABLE_TURNSTILE && (
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+      )}
     </section>
   );
 }
