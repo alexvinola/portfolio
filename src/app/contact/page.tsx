@@ -13,37 +13,42 @@ export default function Contact() {
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
 
-useEffect(() => {
-  if (!ENABLE_TURNSTILE) {
-    setTurnstileToken("bypass");
-    return;
-  }
-
-  // Para evitar renderizaciones múltiples
-  let rendered = false;
-
-  const renderTurnstile = () => {
-    if (rendered) return; // Si ya renderizado, no hacer nada
-    if (window.turnstile && turnstileContainerRef.current) {
-      turnstileContainerRef.current.innerHTML = ""; // Limpia antes
-      window.turnstile.render(turnstileContainerRef.current, {
-        sitekey: TURNSTILE_SITE_KEY,
-        callback: setTurnstileToken,
-        "error-callback": () => setTurnstileToken(null),
-        "expired-callback": () => setTurnstileToken(null),
-      });
-      rendered = true; // Marcar como ya renderizado
+  useEffect(() => {
+    if (!ENABLE_TURNSTILE) {
+      setTurnstileToken("bypass");
+      return;
     }
-  };
 
-  if (window.turnstile) {
-    renderTurnstile();
-  } else {
-    const handleTurnstileReady = () => renderTurnstile();
-    window.addEventListener("turnstile-ready", handleTurnstileReady);
-    return () => window.removeEventListener("turnstile-ready", handleTurnstileReady);
-  }
-}, []);
+    let rendered = false; // control interno para evitar duplicados
+
+    const renderTurnstile = () => {
+      if (rendered) return;
+      if (window.turnstile && turnstileContainerRef.current) {
+        turnstileContainerRef.current.innerHTML = "";
+        window.turnstile.render(turnstileContainerRef.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+          callback: setTurnstileToken,
+          "error-callback": () => setTurnstileToken(null),
+          "expired-callback": () => setTurnstileToken(null),
+        });
+        rendered = true;
+      }
+    };
+
+    if (window.turnstile) {
+      renderTurnstile();
+    } else {
+      // Aquí el truco: polling cada 200ms hasta que el script esté listo
+      const interval = setInterval(() => {
+        if (window.turnstile) {
+          renderTurnstile();
+          clearInterval(interval);
+        }
+      }, 200);
+      return () => clearInterval(interval); // Cleanup en el unmount
+    }
+  }, []);
+
 
 
 
