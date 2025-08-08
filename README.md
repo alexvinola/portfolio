@@ -38,17 +38,18 @@ Decidí desarrollar este portfolio como una oportunidad para:
 
 ## 📈 Aprendizajes y mejoras clave
 
-- Gestión avanzada del estado y lógica cliente/servidor para evitar problemas de **hidratación** en Next.js.
-- Implementación de buenas prácticas de **SEO** y **accesibilidad** (metadatos, roles, atributos ARIA).
-- Optimización del rendimiento y carga de recursos (Core Web Vitals, imágenes, rendering).
-- Código modular y limpio con **TypeScript**, facilitando el mantenimiento y escalabilidad.
-- Interfaz consistente y fluida gracias a **Tailwind CSS** y componentes reutilizables.
-- Uso profesional de **Vercel** con CI/CD, preview deploys y control de entorno.
-- Estructura base preparada para añadir futuras secciones como:
-  - Certificaciones
-  - Servicios freelance
-  - Portfolio de diseño o contenido audiovisual
-  - Idiomas
+- ✅ Gestión avanzada del estado y lógica cliente/servidor para evitar problemas de **hidratación** en Next.js.
+- ✅ Buenas prácticas de **SEO** y **accesibilidad**:
+  - Uso correcto de metadatos, roles semánticos y atributos ARIA.
+- ✅ Optimización del rendimiento:
+  - Imágenes adaptativas, lazy loading, control de rendering y métricas **Core Web Vitals**.
+- ✅ Código modular, reutilizable y limpio con **TypeScript**, ideal para escalar y mantener fácilmente.
+- ✅ Interfaz moderna y responsive con **Tailwind CSS** y componentes bien estructurados.
+- ✅ Despliegue profesional con **AWS Amplify**:
+  - CI/CD automatizado desde GitHub.
+  - Deploys de preview por rama.
+  - Gestión de entornos y variables sensibles.
+  - Hosting rápido y seguro en la nube de AWS.
 
 ---
 
