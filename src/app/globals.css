@@ -45,6 +45,8 @@
 /* Fondo principal con gradiente azul/blanco */
 body {
   min-height: 100vh;
+  background: #27496d; /* fallback sólido */
+  background: -webkit-linear-gradient(120deg, #ffffff 0%, #3a86ff 50%, #27496d 100%);
   background: linear-gradient(120deg, #ffffff 0%, #3a86ff 50%, #27496d 100%);
   color: var(--foreground);
   font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
