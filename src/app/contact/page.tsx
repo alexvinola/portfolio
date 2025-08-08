@@ -18,21 +18,24 @@ useEffect(() => {
     setTurnstileToken("bypass");
     return;
   }
-  // Limpiar el contenedor antes de renderizar
-  if (turnstileContainerRef.current) {
-    turnstileContainerRef.current.innerHTML = "";
-  }
-  // Renderizar solo si no hay widget presente
+
+  // Para evitar renderizaciones múltiples
+  let rendered = false;
+
   const renderTurnstile = () => {
+    if (rendered) return; // Si ya renderizado, no hacer nada
     if (window.turnstile && turnstileContainerRef.current) {
+      turnstileContainerRef.current.innerHTML = ""; // Limpia antes
       window.turnstile.render(turnstileContainerRef.current, {
         sitekey: TURNSTILE_SITE_KEY,
         callback: setTurnstileToken,
         "error-callback": () => setTurnstileToken(null),
         "expired-callback": () => setTurnstileToken(null),
       });
+      rendered = true; // Marcar como ya renderizado
     }
   };
+
   if (window.turnstile) {
     renderTurnstile();
   } else {
@@ -41,6 +44,7 @@ useEffect(() => {
     return () => window.removeEventListener("turnstile-ready", handleTurnstileReady);
   }
 }, []);
+
 
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
