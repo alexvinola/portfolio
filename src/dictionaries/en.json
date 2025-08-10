@@ -1,0 +1,75 @@
+{
+    "hero": {
+        "description": "💻 Full Stack Developer focused on building functional and scalable solutions, mainly using .NET and Angular. I value teamwork, problem-solving, and continuous improvement in every project I take on.",
+        "download": "Download CV",
+        "projects": "See Projects",
+        "name" : "Alejandro Viñola",
+        "hiname": "Hi! I'm Alejandro Viñola"
+    },
+    "journey": {
+    "title": "Professional Journey",
+    "present": "Present", 
+    "items": [
+      {
+        "startYear": "2025",
+        "title": "Full Stack Software Engineer",
+        "company": "Sportium (hiberus)",
+        "description": "Part of the SPORTIUM development team, specializing in live event listening systems, .NET microservices for web functionalities, and frontend with Angular. Focused on scalability, performance, and real-time capabilities for sports betting platforms."
+      },
+      {
+        "startYear": "2023",
+        "endYear": "2024",
+        "title": "Software Developer",
+        "company": "Integra Tecnología",
+        "description": "Development of mobile and web applications using .NET MAUI, .NET MVC, Angular, and Azure Functions. Experience with backend using .NET 7 and dynamic frontend development with Angular, including deployment to the App Store and Play Store."
+      },
+      {
+        "startYear": "2023",
+        "endYear": "2023",
+        "title": "Software Development Intern",
+        "company": "Integra Tecnología",
+        "description": "Internship developing a business web application for activity management using Angular, Bootstrap, PrimeNG, and .NET. Implemented file export, SMTP emails, and token management."
+      }
+    ]
+  },
+    "about": {
+        "title": "About Me",
+        "desc1": "🧑‍💻 I'm a Full Stack Developer with experience in C#, TypeScript, and SQL, mainly working with Angular and .NET. I use tools like Git and GitLab for version control and project deployment, and I'm well-versed in agile methodologies such as Scrum, using Jira to manage tasks and sprints effectively.",
+        "desc2": "💡 I'm passionate about problem-solving, building meaningful features, and constantly learning new technologies to grow as a developer. I thrive in collaborative environments where teamwork and communication drive progress.",
+        "desc3": "⛺ Outside of work, I enjoy spending time in nature, photography, and video games — activities that help me recharge and bring creativity into my work.",
+        "skills": "Professional Skillset",
+        "tools": "Tools I use",
+        "journey": "Professional Journey"
+  },
+    "projects": {
+    "title": "Projects",
+    "intro": "Although I don't have many projects yet, I never stop working to learn new technologies and explore innovative solutions. Below are some of my recent works, including this very portfolio, which links to my GitHub repository.",
+    "cards": [
+      {
+        "title": "Portfolio Website",
+        "description": "My personal portfolio showcasing my skills, projects, and professional journey. Built with Next.js (React) and Tailwind CSS. You can check the code on GitHub."
+      }
+    ]
+  },
+    "contact": {
+    "title": "Contact Me",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "Your email",
+    "subject": "Subject",
+    "subjectPlaceholder": "Subject",
+    "message": "Message",
+    "messagePlaceholder": "Write your message here",
+    "button": "Send",
+    "sending": "Sending...",
+    "requiredFields": "Please fill out all fields before sending.",
+    "invalidEmail": "Please enter a valid email address.",
+    "captcha": "Please complete the CAPTCHA challenge.",
+    "success": "Message sent! 🎉",
+    "fail": "Failed to send message. Try again later."
+  }
+}
+
+
+

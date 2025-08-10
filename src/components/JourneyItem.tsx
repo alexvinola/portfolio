@@ -1,15 +1,14 @@
+"use client";
+
 import React from "react";
+import { useTranslations } from "@/components/TranslationsProvider";
 
 interface JourneyItem {
   startYear: number;
-  endYear?: number; // puede ser indefinido si es empleo actual
-  title: string;
-  company?: string;
-  description?: string;
-}
-
-interface ProfessionalJourneyProps {
-  journey: JourneyItem[];
+  endYear?: number;
+  titleKey: string;       // clave de traducción para title
+  companyKey?: string;    // clave de traducción para company
+  descriptionKey?: string;// clave para description
 }
 
 const ArrowDown = () => (
@@ -26,80 +25,74 @@ const ArrowDown = () => (
   </svg>
 );
 
-const ProfessionalJourney: React.FC<ProfessionalJourneyProps> = ({ journey }) => {
-  // Ordenar de más reciente a más antiguo
-  const sortedJourney = [...journey].sort((a, b) => b.startYear - a.startYear);
+const journeyItems: JourneyItem[] = [
+  {
+    startYear: 2025,
+    titleKey: "journey.items.0.title",
+    companyKey: "journey.items.0.company",
+    descriptionKey: "journey.items.0.description",
+  },
+  {
+    startYear: 2023,
+    endYear: 2024,
+    titleKey: "journey.items.1.title",
+    companyKey: "journey.items.1.company",
+    descriptionKey: "journey.items.1.description",
+  },
+  {
+    startYear: 2023,
+    endYear: 2023,
+    titleKey: "journey.items.2.title",
+    companyKey: "journey.items.2.company",
+    descriptionKey: "journey.items.2.description",
+  },
+];
+
+const ProfessionalJourney: React.FC = () => {
+  const t = useTranslations();
+
+  const sortedJourney = [...journeyItems].sort((a, b) => b.startYear - a.startYear);
 
   return (
-    <div className="relative flex flex-col items-center py-6">
-      {/* Línea vertical central con color timeline y opacidad suavizada */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-timeline opacity-80 -translate-x-1/2 rounded" />
-
-      <div className="flex flex-col gap-12 w-full max-w-xl">
-        {sortedJourney.map(({ startYear, endYear, title, company, description }, idx) => (
-          <div key={idx} className="relative flex items-start gap-6">
-            {/* Punto central en la línea */}
-            <div className="z-10 flex-shrink-0 w-5 h-5 rounded-full bg-timeline border-2 border-white opacity-100 mt-1 -translate-x-1/2 left-1/2 absolute" />
-
-            {/* Contenido del bloque alineado a la izquierda */}
-            <div className="ml-4 pl-8 border-l-4 border-timeline border-opacity-50 relative">
-              <div className="font-semibold text-lg text-timeline mb-1">
-                {endYear ? `${startYear} - ${endYear}` : `${startYear} - Present`}
-              </div>
-              <div className="text-xl font-bold mb-1 text-secondary">
-                {title}
-              </div>
-              {company && (
-                <div className="text-sm italic mb-2 text-secondary">
-                  {company}
+    <div>
+      <div className="relative flex flex-col items-center py-6">
+        <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-timeline opacity-80 -translate-x-1/2 rounded" />
+        
+        <div className="flex flex-col gap-12 w-full max-w-xl">
+          {sortedJourney.map(({ startYear, endYear, titleKey, companyKey, descriptionKey }, idx) => (
+            <div key={idx} className="relative flex items-start gap-6">
+              <div className="z-10 flex-shrink-0 w-5 h-5 rounded-full bg-timeline border-2 border-white mt-1 -translate-x-1/2 left-1/2 absolute" />
+              
+              <div className="ml-4 pl-8 border-l-4 border-timeline border-opacity-50 relative">
+                <div className="font-semibold text-lg text-timeline mb-1">
+                  {endYear ? `${startYear} - ${endYear}` : `${startYear} - ${t("journey.present")}`}
                 </div>
-              )}
-              {description && (
-                <div className="text-sm text-main-dark/85">
-                  {description}
+                <div className="text-xl font-bold mb-1 text-secondary">
+                  {t(titleKey)}
+                </div>
+                {companyKey && (
+                  <div className="text-sm italic mb-2 text-secondary">
+                    {t(companyKey)}
+                  </div>
+                )}
+                {descriptionKey && (
+                  <div className="text-sm text-main-dark/85">
+                    {t(descriptionKey)}
+                  </div>
+                )}
+              </div>
+
+              {idx < sortedJourney.length - 1 && (
+                <div className="absolute left-1/2 top-full flex justify-center w-full -translate-x-1/2">
+                  <ArrowDown />
                 </div>
               )}
             </div>
-
-            {/* Flecha hacia abajo, con color timeline y opacidad suavizada */}
-            {idx < sortedJourney.length - 1 && (
-              <div className="absolute left-1/2 top-full flex justify-center w-full -translate-x-1/2">
-                <ArrowDown />
-              </div>
-            )}
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
 };
 
-// Array de experiencia profesional en el mismo archivo:
-const professionalHistory: JourneyItem[] = [
-  {
-    startYear: 2025,
-    title: "Full Stack Software Engineer",
-    company: "Sportium (hiberus)",
-    description:
-      "Part of the SPORTIUM development team, specializing in live event listening systems, .NET microservices for web functionalities, and frontend with Angular. Focused on scalability, performance, and real-time capabilities for sports betting platforms.",
-  },
-  {
-    startYear: 2023,
-    endYear: 2024,
-    title: "Software Developer",
-    company: "Integra Tecnología",
-    description:
-      "Development of mobile and web applications using .NET MAUI, .NET MVC, Angular, and Azure Functions. Experience with backend using .NET 7 and dynamic frontend development with Angular, including deployment to the App Store and Play Store.",
-  },
-  {
-    startYear: 2023,
-    endYear: 2023,
-    title: "Software Development Intern",
-    company: "Integra Tecnología",
-    description:
-      "Internship developing a business web application for activity management using Angular, Bootstrap, PrimeNG, and .NET. Implemented file export, SMTP emails, and token management.",
-  },
-];
-
-// Exporta ambos para tu About
-export { ProfessionalJourney, professionalHistory };
+export { ProfessionalJourney };
