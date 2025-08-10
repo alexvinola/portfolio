@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { useTranslations } from "@/components/TranslationsProvider";
+import Turnstile from "react-turnstile";
 
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_CF_TURNSTILE_SITE_KEY || "";
 const ENABLE_TURNSTILE = process.env.NEXT_PUBLIC_ENABLE_TURNSTILE === "true";
@@ -12,42 +13,10 @@ export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
-  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const turnstileContainerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!ENABLE_TURNSTILE) {
-      setTurnstileToken("bypass");
-      return;
-    }
-
-    let rendered = false;
-    const renderTurnstile = () => {
-      if (rendered) return;
-      if (window.turnstile && turnstileContainerRef.current) {
-        turnstileContainerRef.current.innerHTML = "";
-        window.turnstile.render(turnstileContainerRef.current, {
-          sitekey: TURNSTILE_SITE_KEY,
-          callback: setTurnstileToken,
-          "error-callback": () => setTurnstileToken(null),
-          "expired-callback": () => setTurnstileToken(null),
-        });
-        rendered = true;
-      }
-    };
-
-    if (window.turnstile) {
-      renderTurnstile();
-    } else {
-      const interval = setInterval(() => {
-        if (window.turnstile) {
-          renderTurnstile();
-          clearInterval(interval);
-        }
-      }, 200);
-      return () => clearInterval(interval);
-    }
-  }, []);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(
+    !ENABLE_TURNSTILE ? "bypass" : null
+  );
+  const [captchaKey, setCaptchaKey] = useState(0); // 🔄 clave para remount
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -87,9 +56,7 @@ export default function Contact() {
         setResult({ success: true, message: t("contact.success") });
         form.reset();
         setTurnstileToken(ENABLE_TURNSTILE ? null : "bypass");
-        if (ENABLE_TURNSTILE && window.turnstile && turnstileContainerRef.current) {
-          window.turnstile.reset(turnstileContainerRef.current);
-        }
+        setCaptchaKey((prev) => prev + 1); // 🔄 fuerza que el captcha se reinicie
       })
       .catch((error) => {
         console.error("EmailJS error:", error);
@@ -104,7 +71,12 @@ export default function Contact() {
         {t("contact.title")}
       </h2>
 
-      <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-6 w-full" noValidate>
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-6 w-full"
+        noValidate
+      >
         {/* Nombre */}
         <div className="flex flex-col w-full">
           <label htmlFor="name" className="mb-2 font-semibold text-secondary">
@@ -115,7 +87,7 @@ export default function Contact() {
             id="name"
             name="user_name"
             placeholder={t("contact.namePlaceholder")}
-            className="w-full bg-black/60 text-white placeholder-gray-400 border border-gray-600 rounded-md px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full bg-black/60 text-white border border-gray-600 rounded-md px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
             disabled={sending}
             required
           />
@@ -131,7 +103,7 @@ export default function Contact() {
             id="email"
             name="user_email"
             placeholder={t("contact.emailPlaceholder")}
-            className="w-full bg-black/60 text-white placeholder-gray-400 border border-gray-600 rounded-md px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full bg-black/60 text-white border border-gray-600 rounded-md px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
             disabled={sending}
             required
           />
@@ -147,7 +119,7 @@ export default function Contact() {
             id="subject"
             name="subject"
             placeholder={t("contact.subjectPlaceholder")}
-            className="w-full bg-black/60 text-white placeholder-gray-400 border border-gray-600 rounded-md px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full bg-black/60 text-white border border-gray-600 rounded-md px-4 py-2 shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
             disabled={sending}
             required
           />
@@ -163,20 +135,27 @@ export default function Contact() {
             name="message"
             rows={5}
             placeholder={t("contact.messagePlaceholder")}
-            className="w-full bg-black/60 text-white placeholder-gray-400 border border-gray-600 rounded-md px-4 py-2 resize-none shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
+            className="w-full bg-black/60 text-white border border-gray-600 rounded-md px-4 py-2 resize-none shadow-lg focus:outline-none focus:ring-2 focus:ring-primary"
             disabled={sending}
             required
           />
         </div>
 
+        {/* Captura del token */}
         <input type="hidden" name="cf_turnstile_token" value={turnstileToken || ""} />
 
+        {/* Captcha */}
         {ENABLE_TURNSTILE && (
-          <div
-            ref={turnstileContainerRef}
-            style={{ width: "100%", height: 80 }}
-            className="flex justify-center"
-          />
+          <div className="flex justify-center">
+            <Turnstile
+              key={captchaKey} // cada cambio reinicia el widget
+              sitekey={TURNSTILE_SITE_KEY}
+              onSuccess={setTurnstileToken}
+              onError={() => setTurnstileToken(null)}
+              onExpire={() => setTurnstileToken(null)}
+              className="my-3 light"
+            />
+          </div>
         )}
 
         <button
@@ -196,10 +175,6 @@ export default function Contact() {
         >
           {result.message}
         </p>
-      )}
-
-      {ENABLE_TURNSTILE && (
-        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
       )}
     </section>
   );
