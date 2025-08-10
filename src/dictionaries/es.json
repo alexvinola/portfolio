@@ -1,0 +1,72 @@
+{
+  "hero": {
+    "description": "💻 Desarrollador Full Stack enfocado en crear soluciones funcionales y escalables, utilizando principalmente .NET y Angular. Valoro el trabajo en equipo, la resolución de problemas y la mejora continua en cada proyecto que asumo.",
+    "download": "Descargar CV",
+    "projects": "Ver Proyectos",
+    "name": "Alejandro Viñola",
+    "hiname": "¡Hola! Soy Alejandro Viñola"
+  },
+  "journey": {
+    "title": "Trayectoria Profesional",
+    "present": "Actualmente",
+    "items": [
+      {
+        "startYear": "2025",
+        "title": "Ingeniero de Software Full Stack",
+        "company": "Sportium (hiberus)",
+        "description": "Miembro del equipo de desarrollo de SPORTIUM, especializado en sistemas de escucha de eventos en vivo, microservicios .NET para funcionalidades web y frontend con Angular. Enfocado en la escalabilidad, el rendimiento y la capacidad en tiempo real para plataformas de apuestas deportivas."
+      },
+      {
+        "startYear": "2023",
+        "endYear": "2024",
+        "title": "Desarrollador de Software",
+        "company": "Integra Tecnología",
+        "description": "Desarrollo de aplicaciones móviles y web utilizando .NET MAUI, .NET MVC, Angular y Azure Functions. Experiencia en backend con .NET 7 y desarrollo frontend dinámico con Angular, incluyendo despliegue en App Store y Play Store."
+      },
+      {
+        "startYear": "2023",
+        "endYear": "2023",
+        "title": "Becario en Desarrollo de Software",
+        "company": "Integra Tecnología",
+        "description": "Prácticas desarrollando una aplicación web empresarial para gestión de actividades usando Angular, Bootstrap, PrimeNG y .NET. Implementación de exportación de archivos, envío de correos SMTP y gestión de tokens."
+      }
+    ]
+  },
+    "about": {
+      "title": "Sobre mí",
+      "desc1": "🧑‍💻 Soy Desarrollador Full Stack con experiencia en C#, TypeScript y SQL, trabajando principalmente con Angular y .NET. Utilizo herramientas como Git y GitLab para control de versiones y despliegue de proyectos, y manejo metodologías ágiles como Scrum, usando Jira para gestionar tareas y sprints de forma eficiente.",
+      "desc2": "💡 Me apasiona la resolución de problemas, construir funcionalidades con sentido y aprender constantemente nuevas tecnologías para crecer como desarrollador. Disfruto trabajar en ambientes colaborativos donde el trabajo en equipo y la comunicación impulsan el progreso.",
+      "desc3": "⛺ Fuera del trabajo, me encanta pasar tiempo en la naturaleza, la fotografía y los videojuegos; actividades que me ayudan a recargar energías y aportar creatividad a mi labor.",
+      "skills": "Competencias profesionales",
+      "tools": "Herramientas que utilizo",
+      "journey": "Trayectoria profesional"
+  },
+    "projects": {
+    "title": "Proyectos",
+    "intro": "Aunque aún no tengo muchos proyectos, nunca dejo de trabajar para aprender nuevas tecnologías y explorar soluciones innovadoras. Aquí puedes ver algunos de mis últimos trabajos, incluido este portfolio, que enlaza a mi repositorio de GitHub.",
+    "cards": [
+      {
+        "title": "Portfolio Web",
+        "description": "Mi portfolio personal donde muestro mis habilidades, proyectos y trayectoria profesional. Desarrollado con Next.js (React) y Tailwind CSS. El código está disponible en GitHub."
+      }
+    ]
+  },
+    "contact": {
+    "title": "Contacto",
+    "name": "Nombre",
+    "namePlaceholder": "Tu nombre",
+    "email": "Correo electrónico",
+    "emailPlaceholder": "Tu correo electrónico",
+    "subject": "Asunto",
+    "subjectPlaceholder": "Asunto",
+    "message": "Mensaje",
+    "messagePlaceholder": "Escribe tu mensaje aquí",
+    "button": "Enviar",
+    "sending": "Enviando...",
+    "requiredFields": "Por favor, rellena todos los campos antes de enviar.",
+    "invalidEmail": "Introduce un correo electrónico válido.",
+    "captcha": "Por favor, completa el desafío CAPTCHA.",
+    "success": "¡Mensaje enviado! 🎉",
+    "fail": "Error al enviar el mensaje. Inténtalo de nuevo más tarde."
+  }
+}

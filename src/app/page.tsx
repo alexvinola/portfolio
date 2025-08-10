@@ -1,13 +1,22 @@
-import HeroSection from "@/components/HeroSection";
-import ProjectCard from "@/components/ProjectCard";
-import Image from "next/image";
+import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-4 pb-8 gap-16 sm:p-10">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <HeroSection></HeroSection>
-      </main>
-    </div>
-  );
+const SUPPORTED_LOCALES = ["es", "en"] as const;
+type Locale = (typeof SUPPORTED_LOCALES)[number];
+
+export default async function RootPage() {
+  const headersList = await headers();
+  const acceptLanguage = headersList.get("accept-language");
+
+  let locale: Locale = "en"; // valor por defecto tipado correctamente
+
+  if (acceptLanguage) {
+    const browserLang = acceptLanguage.split(",")[0].split("-")[0].toLowerCase();
+
+    if (SUPPORTED_LOCALES.includes(browserLang as Locale)) {
+      locale = browserLang as Locale;
+    }
+  }
+
+  redirect(`/${locale}`);
 }

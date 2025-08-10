@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { GoogleAnalytics } from "@next/third-parties/google";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -24,7 +25,7 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({ children }: RootLayoutProps) {  
   return (
     <html lang="en">
       <body
@@ -48,7 +49,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
             hidden md:block
           "
           style={{ opacity: 0.8 }}
-          objectFit="contain"
           fill={false}
           width={800}  // Ajusta según el tamaño real o deseado
           height={600} // Ajusta según el tamaño real o deseado
@@ -82,6 +82,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             size={20}
           />
         </footer>
+
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""}  />
     </html>

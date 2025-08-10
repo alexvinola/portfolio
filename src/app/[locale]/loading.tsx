@@ -1,7 +1,5 @@
 "use client";
 import Lottie from "lottie-react";
-import animationData from "@/animations/loader.json";
-import animationData1 from "@/animations/loading.json";
 import morty from "@/animations/morty.json";
 
 export default function Loading() {

@@ -1,13 +1,19 @@
 "use client";
+
 import { useState } from "react";
 import { TypeAnimation } from "react-type-animation";
 import RrssIcons from "./RrssIcons";
+import { useTranslations, useLocale } from "@/components/TranslationsProvider";
 
 export default function HeroSection() {
+  const t = useTranslations();
+  const locale = useLocale();
   const [doneTyping, setDoneTyping] = useState(false);
-  const fullText = "Hi, I'm Alejandro Viñola";
-  const name = " Alejandro Viñola";
+  const fullText = t("hero.hiname");
+  const name = t("hero.name");
   const nameStart = fullText.indexOf(name);
+
+
 
   return (
     <section className="max-w-3xl mx-auto px-4 sm:px-0 text-center sm:text-left">
@@ -27,7 +33,7 @@ export default function HeroSection() {
           <>
             {fullText.slice(0, nameStart)}
             <span className="text-main-dark">
-              &nbsp;{fullText.slice(nameStart).trimStart()}
+              {fullText.slice(nameStart).trimStart()}
             </span>
             <span
               className="animate-blink text-main-dark ml-1 inline-flex items-center"
@@ -39,10 +45,9 @@ export default function HeroSection() {
         )}
       </h1>
 
+      {/* Texto sacado del diccionario */}
       <p className="text-lg text-main-dark mb-6">
-        💻 Full Stack Developer focused on building functional and scalable solutions, mainly
-        using .NET and Angular. I value teamwork, problem-solving, and continuous improvement in
-        every project I take on.
+        {t("hero.description")}
       </p>
 
       <div className="flex flex-col sm:flex-row justify-center sm:justify-start gap-4">
@@ -51,13 +56,13 @@ export default function HeroSection() {
           download
           className="bg-button-primary text-white px-6 py-3 rounded-lg shadow hover:bg-button-primary-hover transition text-center"
         >
-          Download CV
+          {t("hero.download")}
         </a>
         <a
-          href="/projects"
+          href={`/${locale}/projects`}
           className="bg-button-secondary text-white px-6 py-3 rounded-lg hover:bg-button-secondary-hover transition text-center"
         >
-          See Projects
+          {t("hero.projects")}
         </a>
       </div>
 
