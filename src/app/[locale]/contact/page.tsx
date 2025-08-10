@@ -13,35 +13,24 @@ export default function Contact() {
   const [sending, setSending] = useState(false);
   const [result, setResult] = useState<{ success: boolean; message: string } | null>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
-  const [ready, setReady] = useState(false); // Estado para controlar cuando mostrar formulario
   const turnstileContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!ENABLE_TURNSTILE) {
       setTurnstileToken("bypass");
-      setReady(true); // Listo inmediatamente si está desactivado
       return;
     }
 
     let rendered = false;
-
     const renderTurnstile = () => {
       if (rendered) return;
       if (window.turnstile && turnstileContainerRef.current) {
         turnstileContainerRef.current.innerHTML = "";
         window.turnstile.render(turnstileContainerRef.current, {
           sitekey: TURNSTILE_SITE_KEY,
-          callback: (token: string) => {
-            setTurnstileToken(token);
-            setReady(true); // Marca listo cuando tenga token válido la primera vez
-          },
-          "error-callback": () => {
-            setTurnstileToken(null);
-            setReady(true); // Mostrar formulario aunque captcha fallen
-          },
-          "expired-callback": () => {
-            setTurnstileToken(null);
-          },
+          callback: setTurnstileToken,
+          "error-callback": () => setTurnstileToken(null),
+          "expired-callback": () => setTurnstileToken(null),
         });
         rendered = true;
       }
@@ -49,12 +38,10 @@ export default function Contact() {
 
     if (window.turnstile) {
       renderTurnstile();
-      setReady(false);
     } else {
       const interval = setInterval(() => {
         if (window.turnstile) {
           renderTurnstile();
-          setReady(false);
           clearInterval(interval);
         }
       }, 200);
@@ -110,18 +97,6 @@ export default function Contact() {
       })
       .finally(() => setSending(false));
   };
-
-  if (!ready) {
-    // Mientras carga el widget o espera token, no mostrar el formulario para evitar flashes
-    return (
-      <section className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
-        <h2 className="text-3xl font-bold mb-8 text-center text-main-dark break-words">
-          {t("contact.title")}
-        </h2>
-        <p className="text-center text-main-dark">{t("contact.loading") || "Loading..."}</p>
-      </section>
-    );
-  }
 
   return (
     <section className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
@@ -194,10 +169,8 @@ export default function Contact() {
           />
         </div>
 
-        {/* Campo oculto Turnstile */}
         <input type="hidden" name="cf_turnstile_token" value={turnstileToken || ""} />
 
-        {/* CAPTCHA */}
         {ENABLE_TURNSTILE && (
           <div
             ref={turnstileContainerRef}
@@ -206,7 +179,6 @@ export default function Contact() {
           />
         )}
 
-        {/* Botón enviar */}
         <button
           type="submit"
           disabled={sending}
@@ -216,7 +188,6 @@ export default function Contact() {
         </button>
       </form>
 
-      {/* Mensaje resultado */}
       {result && (
         <p
           className={`mt-4 text-center font-semibold ${
@@ -227,7 +198,6 @@ export default function Contact() {
         </p>
       )}
 
-      {/* Script Turnstile */}
       {ENABLE_TURNSTILE && (
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
       )}
