@@ -5,6 +5,7 @@ import RrssIcons from "@/components/RrssIcons";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from 'next/script';
 
 
 const geistSans = Geist({
@@ -83,8 +84,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
           />
         </footer>
 
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""}  />
+
       </body>
-      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""}  />
+      
     </html>
   );
 }
