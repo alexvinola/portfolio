@@ -25,13 +25,10 @@ Decidí desarrollar este portfolio como una oportunidad para:
 | **React**                 | 19.1.0       | Librería para construir interfaces declarativas y reactivas.               |
 | **TypeScript**            | ^5           | Tipado estático para código más robusto y mantenible.                      |
 | **Tailwind CSS**          | ^4           | Framework de clases utilitarias para un diseño moderno y responsivo.       |
-| **Next.js Image Component**| -           | Optimización de imágenes integrada, mejorando rendimiento y SEO.           |
-| **react-select**          | 5.10.2       | Selector de idiomas con banderas e interfaz intuitiva.                     |
 | **EmailJS**               | 4.4.1        | Envío de correos desde el frontend sin backend propio.                      |
 | **React Icons**           | 5.5.0        | Iconos vectoriales para UI coherente y atractiva.                          |
 | **Lottie React**          | 2.4.1        | Animaciones JSON interactivas y ligeras.                                   |
 | **React Type Animation**  | 3.2.0        | Efectos de escritura en texto animado.                                     |
-| **flag-icons**            | 7.5.0        | Iconos de banderas para experiencia multilingüe.                           |
 | **AWS**                | -            | Despliegue, hosting y manejo de variables de entorno seguro.               |
 
 ---
