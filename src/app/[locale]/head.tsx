@@ -1,4 +1,5 @@
 import { headDict } from "@/lib/headDictionary";
+import Script from "next/script";
 
 interface Props {
   params: { locale: "en" | "es" };
@@ -45,12 +46,19 @@ export default function Head({ params }: Props) {
 
       {/* Favicons */}
       <link rel="icon" href="/favicon.ico" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <link rel="manifest" href="/site.webmanifest" />
 
       {/* Mobile and theme color */}
       <meta name="theme-color" content="#27496d" />
       <meta name="mobile-web-app-capable" content="yes" />
+
+      <Script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="3c49c83f-8175-48ec-a089-567fad81e78b"
+          data-blockingmode="auto"
+          strategy="beforeInteractive"
+          type="text/javascript"
+        />
     </>
   );
 }
