@@ -5,6 +5,7 @@ import RrssIcons from "@/components/RrssIcons";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import CookiebotScript from "@/components/Cookiebot";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -126,7 +127,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
             size={20}
           />
         </footer>
-
+        
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""}  />
         <script
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
