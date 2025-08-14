@@ -4,9 +4,7 @@ import "./globals.css";
 import RrssIcons from "@/components/RrssIcons";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import Script from 'next/script';
-
+import CookiebotScript from "@/components/Cookiebot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,17 +16,62 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://alexvinola.com"),
   title: "Alex Viñola",
-  description: "Developed by Alex Viñola",
+  description:
+    "Web developer specialized in dotNet and Angular learning React, AWS...",
+  keywords: [
+    "portfolio",
+    "Next.js",
+    "React",
+    "web developer",
+    "dotNet",
+    "Angular",
+    ".NET",
+    "AWS",
+  ],
+  authors: [{ name: "Alejandro Viñola Robles", url: "https://alexvinola.com" }],
+  robots: { index: true, follow: true },
+  alternates: {
+    canonical: "https://alexvinola.com/en",
+    languages: {
+      en: "https://alexvinola.com/en",
+      es: "https://alexvinola.com/es",
+      "x-default": "https://alexvinola.com",
+    },
+  },
+  openGraph: {
+    title: "Alex Viñola Portfolio",
+    description:
+      "Web developer specialized in dotNet and Angular learning React, AWS...",
+    url: "https://alexvinola.com/en",
+    siteName: "Alex Viñola Portfolio",
+    images: [
+      {
+        url: "https://alexvinola.com/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Alex Viñola Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {  
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
+      <head>
+        <CookiebotScript />
+      </head>
       <body
         className={`
           ${geistSans.variable}
@@ -51,7 +94,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
           "
           style={{ opacity: 0.8 }}
           fill={false}
-          width={800}  // Ajusta según el tamaño real o deseado
+          width={800} // Ajusta según el tamaño real o deseado
           height={600} // Ajusta según el tamaño real o deseado
           priority={true} // si quieres que se cargue rápido al inicio
         />
@@ -84,10 +127,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
           />
         </footer>
 
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID || ""}  />
-
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={`{"token": "${process.env.NEXT_PUBLIC_CF_ANALYTICS_TOKEN}"}`}
+        ></script>
       </body>
-      
     </html>
   );
 }
