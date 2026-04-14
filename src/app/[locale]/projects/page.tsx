@@ -12,12 +12,17 @@ type Project = {
 
 const projects: Project[] = [
   {
-    titleKey: "projects.cards.0.title",            // Clave en el JSON para el título
-    descriptionKey: "projects.cards.0.description",// Clave en el JSON para la descripción
+    titleKey: "projects.cards.0.title",
+    descriptionKey: "projects.cards.0.description",
     imageUrl: "/projects/portfolio.png",
     projectUrl: "https://github.com/alexvinola/portfolio",
+  },
+  {
+    titleKey: "projects.cards.1.title",
+    descriptionKey: "projects.cards.1.description",
+    imageUrl: "/projects/python-logo.png",
+    projectUrl: "https://github.com/alexvinola/membership-python",
   }
-  // Puedes añadir más objetos aquí con index 1, 2, etc., en los JSON
 ];
 
 export default function Projects() {

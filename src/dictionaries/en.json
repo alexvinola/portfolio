@@ -48,6 +48,10 @@
       {
         "title": "Portfolio Website",
         "description": "My personal portfolio showcasing my skills, projects, and professional journey. Built with Next.js (React) and Tailwind CSS. You can check the code on GitHub."
+      },
+      {
+        "title": "Python Membership Api",
+        "description": "Personal project to develop a membership management API using Python and FastAPI. It includes features for user registration, authentication, and role-based access control. I use this project to practice Python and API development."
       }
     ]
   },

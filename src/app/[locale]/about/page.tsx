@@ -15,6 +15,7 @@ export default function AboutMe() {
     { iconSrc: "/skills/dotnet.png", altText: ".NET" },
     { iconSrc: "/skills/angular.png", altText: "Angular" },
     { iconSrc: "/skills/scrum.png", altText: "Scrum" },
+    { iconSrc: "/skills/python.png", altText: "Python" },
   ];
 
   const tools = [
