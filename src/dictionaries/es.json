@@ -48,6 +48,10 @@
       {
         "title": "Portfolio Web",
         "description": "Mi portfolio personal donde muestro mis habilidades, proyectos y trayectoria profesional. Desarrollado con Next.js (React) y Tailwind CSS. El código está disponible en GitHub."
+      },
+      {
+        "title": "Python Membership Api",
+        "description": "Proyecto personal para desarrollar una API de gestión de membresía utilizando Python y FastAPI. Incluye funcionalidades para registro de usuarios, autenticación y control de acceso basado en roles. Utilizo este proyecto para practicar Python y desarrollo de APIs."
       }
     ]
   },
