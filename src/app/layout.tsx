@@ -120,7 +120,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             backgroundColor: "transparent",
           }}
         >
-          <p className="text-foreground">© 2025 Alejandro Viñola Robles</p>
+          <p className="text-foreground">© 2026 Alejandro Viñola Robles</p>
           <RrssIcons
             githubUrl="https://github.com/alexvinola"
             linkedinUrl="https://linkedin.com/in/alejandrovinola"
