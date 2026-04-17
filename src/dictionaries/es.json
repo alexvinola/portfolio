@@ -52,6 +52,10 @@
       {
         "title": "Python Membership Api",
         "description": "Proyecto personal para desarrollar una API de gestión de membresía utilizando Python y FastAPI. Incluye funcionalidades para registro de usuarios, autenticación y control de acceso basado en roles. Utilizo este proyecto para practicar Python y desarrollo de APIs."
+      },
+      {
+        "title": "NoumorDevs Web",
+        "description": "NoumorDevs es una web técnica sobre Spec-Driven Development y desarrollo de software con IA, enfocada en arquitecturas, workflows, calidad y evolución de roles hacia perfiles más estratégicos como arquitecto de soluciones."
       }
     ]
   },
