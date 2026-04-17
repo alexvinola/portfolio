@@ -18,6 +18,12 @@ const projects: Project[] = [
     projectUrl: "https://github.com/alexvinola/portfolio",
   },
   {
+    titleKey: "projects.cards.2.title",
+    descriptionKey: "projects.cards.2.description",
+    imageUrl: "/projects/noumordevs.png",
+    projectUrl: "https://noumordevs.alexvinola.com",
+  },
+  {
     titleKey: "projects.cards.1.title",
     descriptionKey: "projects.cards.1.description",
     imageUrl: "/projects/python-logo.png",
