@@ -1,5 +1,5 @@
 # Portfolio Personal — Alejandro Viñola
- 
+  
 ## 🌐 Sobre este proyecto
 
 Este portfolio personal es una vitrina digital que reúne mi experiencia profesional, mis tecnologías y los proyectos en los que voy trabajando. Está construido para mostrar de forma moderna, accesible y profesional quién soy como Full Stack Developer, con un foco creciente en **IA aplicada al desarrollo software**.
