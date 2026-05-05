@@ -27,6 +27,7 @@ Decidí rehacer este portfolio como oportunidad para:
 | **Vitest** | 4.0 | Test runner moderno integrado con Angular CLI. |
 | **Cloudflare Web Analytics** | — | Métricas privacy-first sin cookies ni banners de consentimiento. |
 | **GitHub + Cloudflare Pages** | — | CI/CD automatizado, hosting estático y deploys de preview por rama. |
+| **AWS**                | -            | Despliegue, hosting y manejo de variables de entorno seguro.               |
 
 ### Decisiones técnicas destacables
 
