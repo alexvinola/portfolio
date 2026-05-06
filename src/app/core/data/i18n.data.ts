@@ -32,7 +32,8 @@ export const translations: Record<Lang, Dict> = {
     'about.lang.es': 'Español — Nativo',
     'about.lang.en': 'Inglés — B2 Avanzado',
 
-    'about.term.status': 'empleado &amp; <strong>abierto a proyectos interesantes</strong>',
+    // 'about.term.status': 'empleado &amp; <strong>abierto a proyectos interesantes</strong>',
+    'about.term.status': 'empleado',
 
     'experience.label': '02 — Experience',
     'experience.title': 'Dónde he trabajado.',
@@ -62,7 +63,7 @@ export const translations: Record<Lang, Dict> = {
     'contact.title.line1': 'Construyamos',
     'contact.title.line2': 'algo juntos.',
 
-    'footer.location': 'Zaragoza, España — Open to remote / relocation',
+    'footer.location': 'Zaragoza, España',
   },
   en: {
     'nav.about': 'About',
@@ -90,7 +91,8 @@ export const translations: Record<Lang, Dict> = {
     'about.lang.es': 'Spanish — Native',
     'about.lang.en': 'English — B2 Advanced',
 
-    'about.term.status': 'employed &amp; <strong>open to interesting projects</strong>',
+    // 'about.term.status': 'employed &amp; <strong>open to interesting projects</strong>',
+    'about.term.status': 'employed',
 
     'experience.label': '02 — Experience',
     'experience.title': "Where I've worked.",
@@ -120,6 +122,6 @@ export const translations: Record<Lang, Dict> = {
     'contact.title.line1': "Let's build",
     'contact.title.line2': 'something together.',
 
-    'footer.location': 'Zaragoza, Spain — Open to remote / relocation',
+    'footer.location': 'Zaragoza, Spain',
   },
 };

@@ -121,7 +121,7 @@ import { personal } from '../../core/data/personal.data';
     <section id="hero">
       <div class="hero-grid-bg" aria-hidden="true"></div>
       <div class="container-page hero-content">
-        <div class="hero-badge anim-fadeup delay-1">{{ 'hero.eyebrow' | t }}</div>
+        <!-- <div class="hero-badge anim-fadeup delay-1">{{ 'hero.eyebrow' | t }}</div> -->
 
         <h1 class="hero-name anim-fadeup delay-2">
           Alejandro<br /><span class="accent">Vi&ntilde;ola</span>
