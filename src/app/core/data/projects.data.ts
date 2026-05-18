@@ -71,7 +71,7 @@ export const projects: ProjectItem[] = [
       es: 'Espacio de exploración con modelos generativos, RAG, embeddings y evaluación. Pensado para iterar deprisa sobre ideas antes de llevarlas a un workflow estable.',
       en: 'A space to explore generative models, RAG, embeddings and evaluation. Built to iterate fast on ideas before promoting them to a stable workflow.',
     },
-    technologies: ['Python', 'Jupyter', 'LLMs', 'Embeddings', 'RAG'],
+    technologies: ['Python', 'Jupyter', 'LLMs', 'Embeddings', 'RAG', 'Hugging Face', 'Transformers', 'Finetuning'],
     category: 'ai',
     links: { github: 'https://github.com/alexvinola/AI_Playground' },
     featured: true,
