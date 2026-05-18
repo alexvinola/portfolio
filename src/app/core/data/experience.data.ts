@@ -45,7 +45,7 @@ export const experience: ExperienceItem[] = [
         en: 'Agent orchestration, reusable skills and workflow automation to improve internal productivity.',
       },
     ],
-    technologies: ['Python', 'GenAI', 'LLM Agents', 'Workflow Automation', 'Hugging Face'],
+    technologies: ['Python', 'GenAI', 'LLM Agents', 'Workflow Automation'],
   },
   {
     company: {

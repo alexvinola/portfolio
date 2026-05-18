@@ -52,6 +52,8 @@ export const skills: SkillGroup[] = [
       { name: 'Kubernetes', slug: 'kubernetes', color: '326ce5', level: 'familiar' },
       { name: 'GitHub Actions', slug: 'githubactions', color: '2088ff', level: 'advanced' },
       { name: 'GitLab CI/CD', slug: 'gitlab', color: 'fc6d26', level: 'advanced' },
+      { name: 'Portainer', slug: 'portainer', color: '24a0a7', level: 'advanced' },
+      { name: 'ArgoCD', slug: 'argo', color: '5796eb', level: 'familiar' },
     ],
   },
   {
