@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostListener, PLATFORM_ID, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, PLATFORM_ID, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { TranslatePipe } from '../../core/pipes/translate.pipe';
 import { I18nService } from '../../core/services/i18n.service';
@@ -18,9 +18,15 @@ interface NavItem { id: string; href: string; key: string; }
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 clamp(1.5rem, 5vw, 4rem);
       height: 64px;
-      background: color-mix(in oklch, var(--bg) 85%, transparent);
-      backdrop-filter: blur(16px);
+      /* Fondo casi opaco en móvil: nada de backdrop-filter (mata el scroll). */
+      background: color-mix(in oklch, var(--bg) 94%, transparent);
       border-bottom: 1px solid var(--border);
+    }
+    @media (min-width: 768px) {
+      nav.site-nav {
+        background: color-mix(in oklch, var(--bg) 80%, transparent);
+        backdrop-filter: blur(16px);
+      }
     }
     .logo {
       font-family: var(--font-mono);
@@ -106,8 +112,8 @@ interface NavItem { id: string; href: string; key: string; }
 
     .mobile-menu {
       position: fixed; top: 64px; left: 0; right: 0;
-      background: color-mix(in oklch, var(--bg) 95%, transparent);
-      backdrop-filter: blur(16px);
+      /* Overlay sólido: rápido en móvil y mejor legibilidad. */
+      background: var(--bg);
       border-bottom: 1px solid var(--border);
       padding: 0.5rem clamp(1.5rem, 5vw, 4rem);
       display: flex; flex-direction: column;
@@ -141,7 +147,7 @@ interface NavItem { id: string; href: string; key: string; }
       <ul class="nav-links">
         @for (item of nav; track item.id) {
           <li>
-            <a [href]="item.href" [class.active]="spy.active() === item.id">{{ item.key | t }}</a>
+            <a [href]="item.href" [class.active]="spy.active() === item.id" (click)="onNavClick()">{{ item.key | t }}</a>
           </li>
         }
       </ul>
@@ -205,7 +211,7 @@ interface NavItem { id: string; href: string; key: string; }
           <a
             [href]="item.href"
             [class.active]="spy.active() === item.id"
-            (click)="menuOpen.set(false)"
+            (click)="onNavClick()"
           >{{ item.key | t }}</a>
         }
       </div>
@@ -231,12 +237,14 @@ export class Header {
   onLogoClick(event: Event): void {
     if (!isPlatformBrowser(this.platformId)) return;
     event.preventDefault();
+    this.spy.suppressSync();
     window.scrollTo({ top: 0, behavior: 'smooth' });
     this.spy.resetToHome();
   }
 
-  @HostListener('window:scroll')
-  onScroll(): void {
-    if (!isPlatformBrowser(this.platformId)) return;
+  /** Cierra el menú y silencia el sync de URL durante el smooth scroll. */
+  onNavClick(): void {
+    this.menuOpen.set(false);
+    this.spy.suppressSync();
   }
 }
