@@ -54,7 +54,8 @@ html, body {
   font-family: var(--font-display);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth;
+  /* Sin scroll-behavior global: el smooth lo controla JS sólo en clics de
+     navegación (suppressSync), evitando que iOS secuestre los flicks rápidos. */
   overflow-x: hidden;
   transition: background .35s cubic-bezier(0.4,0,0.2,1), color .35s cubic-bezier(0.4,0,0.2,1);
 }
@@ -164,6 +165,11 @@ body {
   transform: translateY(18px);
   transition: opacity .7s cubic-bezier(0.4,0,0.2,1), transform .7s cubic-bezier(0.4,0,0.2,1);
   transition-delay: var(--reveal-delay, 0ms);
+}
+/* will-change sólo mientras el elemento aún no se ha revelado: al añadir
+   .is-visible se libera la capa de composición (no quedan capas GPU
+   permanentes en decenas de nodos). */
+.reveal:not(.is-visible) {
   will-change: opacity, transform;
 }
 .reveal.is-visible {

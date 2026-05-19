@@ -147,7 +147,7 @@ interface NavItem { id: string; href: string; key: string; }
       <ul class="nav-links">
         @for (item of nav; track item.id) {
           <li>
-            <a [href]="item.href" [class.active]="spy.active() === item.id" (click)="onNavClick()">{{ item.key | t }}</a>
+            <a [href]="item.href" [class.active]="spy.active() === item.id" (click)="onNavClick($event, item.id)">{{ item.key | t }}</a>
           </li>
         }
       </ul>
@@ -211,7 +211,7 @@ interface NavItem { id: string; href: string; key: string; }
           <a
             [href]="item.href"
             [class.active]="spy.active() === item.id"
-            (click)="onNavClick()"
+            (click)="onNavClick($event, item.id)"
           >{{ item.key | t }}</a>
         }
       </div>
@@ -242,9 +242,19 @@ export class Header {
     this.spy.resetToHome();
   }
 
-  /** Cierra el menú y silencia el sync de URL durante el smooth scroll. */
-  onNavClick(): void {
+  /**
+   * Navegación por anclas controlada por JS (scroll programático puntual):
+   * cierra el menú, silencia el sync de URL y hace scroll suave al destino.
+   * Evita depender de `scroll-behavior: smooth` global (que secuestraba los
+   * flicks rápidos en iOS).
+   */
+  onNavClick(event: Event, id: string): void {
     this.menuOpen.set(false);
     this.spy.suppressSync();
+    if (!isPlatformBrowser(this.platformId)) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
