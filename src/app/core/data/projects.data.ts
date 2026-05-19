@@ -32,6 +32,22 @@ export const projects: ProjectItem[] = [
     year: '2026',
   },
   {
+    name: 'AI Playground',
+    tagline: {
+      es: 'Experimentos rápidos con modelos generativos',
+      en: 'Quick experiments with generative models',
+    },
+    description: {
+      es: 'Espacio de exploración con modelos generativos, RAG, embeddings y evaluación. Pensado para iterar deprisa sobre ideas antes de llevarlas a un workflow estable.',
+      en: 'A space to explore generative models, RAG, embeddings and evaluation. Built to iterate fast on ideas before promoting them to a stable workflow.',
+    },
+    technologies: ['Python', 'Jupyter', 'LLMs', 'Embeddings', 'RAG', 'Hugging Face', 'Transformers', 'Finetuning'],
+    category: 'ai',
+    links: { github: 'https://github.com/alexvinola/AI_Playground' },
+    featured: true,
+    year: '2026',
+  },
+  {
     name: 'AI Workflows',
     tagline: {
       es: 'Workflows reutilizables sobre LLMs',
@@ -62,22 +78,6 @@ export const projects: ProjectItem[] = [
     year: '2026',
   },
   {
-    name: 'AI Playground',
-    tagline: {
-      es: 'Experimentos rápidos con modelos generativos',
-      en: 'Quick experiments with generative models',
-    },
-    description: {
-      es: 'Espacio de exploración con modelos generativos, RAG, embeddings y evaluación. Pensado para iterar deprisa sobre ideas antes de llevarlas a un workflow estable.',
-      en: 'A space to explore generative models, RAG, embeddings and evaluation. Built to iterate fast on ideas before promoting them to a stable workflow.',
-    },
-    technologies: ['Python', 'Jupyter', 'LLMs', 'Embeddings', 'RAG', 'Hugging Face', 'Transformers', 'Finetuning'],
-    category: 'ai',
-    links: { github: 'https://github.com/alexvinola/AI_Playground' },
-    featured: true,
-    year: '2026',
-  },
-  {
     name: 'Portfolio',
     tagline: {
       es: 'Web personal en Angular + Tailwind',
@@ -87,7 +87,7 @@ export const projects: ProjectItem[] = [
       es: 'Este mismo portfolio, construido con Angular moderno, Tailwind v4, SSR/prerender y un modelo de contenido tipado para mantenerlo fácil de editar. Migrado desde una versión anterior en React Next.js.',
       en: 'This very portfolio, built with modern Angular, Tailwind v4, SSR/prerender and a typed content model that keeps it easy to edit. Migrated from a previous version in React Next.js.',
     },
-    technologies: ['Angular', 'TypeScript', 'Tailwind CSS', 'SSR'],
+    technologies: ['Angular', 'TypeScript', 'Tailwind CSS', 'SSR', 'AWS'],
     category: 'web',
     links: { github: 'https://github.com/alexvinola/portfolio', demo: 'https://alexvinola.com' },
     featured: true,
