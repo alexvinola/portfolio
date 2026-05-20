@@ -36,5 +36,6 @@ export const personal = {
     'Angular Specialist',
     '.NET Engineer',
     'AI Tinkerer',
+    'Aspiring Architect & Tech Lead',
   ],
 };
