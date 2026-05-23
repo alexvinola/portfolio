@@ -36,10 +36,10 @@ export const skills: SkillGroup[] = [
     id: 'data',
     title: 'Data',
     items: [
-      { name: 'SQL Server', customIcon: '/logos/sqlserver.svg', level: 'advanced' },
-      { name: 'PostgreSQL', slug: 'postgresql', color: '336791', level: 'advanced' },
+      { name: 'SQL Server', customIcon: '/logos/sqlserver.svg', level: 'core' },
+      { name: 'PostgreSQL', slug: 'postgresql', color: '336791', level: 'core' },
       { name: 'MongoDB', slug: 'mongodb', color: '47a248', level: 'familiar' },
-      { name: 'Redis', slug: 'redis', color: 'ff4438', level: 'familiar' },
+      { name: 'RabbitMQ', slug: 'rabbitmq', color: 'ff6600', level: 'familiar' },
     ],
   },
   {
@@ -50,8 +50,8 @@ export const skills: SkillGroup[] = [
       { name: 'AWS', customIcon: '/logos/aws.svg', level: 'advanced' },
       { name: 'Docker', slug: 'docker', color: '2496ed', level: 'advanced' },
       { name: 'Kubernetes', slug: 'kubernetes', color: '326ce5', level: 'familiar' },
-      { name: 'GitHub Actions', slug: 'githubactions', color: '2088ff', level: 'advanced' },
       { name: 'GitLab CI/CD', slug: 'gitlab', color: 'fc6d26', level: 'advanced' },
+      { name: 'Terraform', slug: 'terraform', color: '7b42bc', level: 'familiar' },
       { name: 'Portainer', slug: 'portainer', color: '24a0a7', level: 'advanced' },
       { name: 'ArgoCD', slug: 'argo', color: '5796eb', level: 'familiar' },
     ],
@@ -70,6 +70,7 @@ export const skills: SkillGroup[] = [
       { name: 'Jupyter', slug: 'jupyter', color: 'f37626', level: 'advanced' },
       { name: 'Pandas', slug: 'pandas', color: '150458', level: 'familiar' },
       { name: 'NumPy', slug: 'numpy', color: '013243', level: 'familiar' },
+      { name: 'MLflow', slug: 'mlflow', color: '000000', level: 'familiar' },
     ],
   },
   {
