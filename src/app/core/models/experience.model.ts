@@ -7,6 +7,6 @@ export interface ExperienceItem {
   period: Localized;
   current?: boolean;
   description: Localized[];
-  technologies: string[];
+  technologies: Localized[];
   link?: string;
 }

@@ -22,7 +22,19 @@ export const experience: ExperienceItem[] = [
         en: 'I integrate AI-assisted development into the workflow, orchestrating AI agents for analysis, code generation, and technical documentation tasks.',
       },
     ],
-    technologies: ['Java', 'Angular', 'Arquitectura', 'Arquitectura Hexagonal', 'TypeScript', 'Analisis Técnico', 'Claude', 'Github Copilot', 'Kubernetes', 'GIS', 'SCRUM'],
+    technologies: [
+      'Java',
+      'Angular',
+      { es: 'Arquitectura', en: 'Architecture' },
+      { es: 'Arquitectura Hexagonal', en: 'Hexagonal Architecture' },
+      'TypeScript',
+      { es: 'Análisis Técnico', en: 'Technical Analysis' },
+      'Claude',
+      'Github Copilot',
+      'Kubernetes',
+      'GIS',
+      'SCRUM',
+    ],
   },
   {
     company: {
@@ -45,7 +57,17 @@ export const experience: ExperienceItem[] = [
         en: 'Frontend work with Angular inside a Full Stack .NET + Angular architecture.',
       },
     ],
-    technologies: ['Angular', '.NET', 'C#', 'Microservices', 'TypeScript', 'Analisis Tecnico', 'Arquitectura', 'SignalR', 'SCRUM'],
+    technologies: [
+      'Angular',
+      '.NET',
+      'C#',
+      { es: 'Microservicios', en: 'Microservices' },
+      'TypeScript',
+      { es: 'Análisis Técnico', en: 'Technical Analysis' },
+      { es: 'Arquitectura', en: 'Architecture' },
+      'SignalR',
+      'SCRUM',
+    ],
   },
   {
     company: {
@@ -68,7 +90,12 @@ export const experience: ExperienceItem[] = [
         en: 'Agent orchestration, reusable skills and workflow automation to improve internal productivity.',
       },
     ],
-    technologies: ['Python', 'GenAI', 'LLM Agents', 'Workflow Automation'],
+    technologies: [
+      'Python',
+      'GenAI',
+      { es: 'Agentes LLM', en: 'LLM Agents' },
+      { es: 'Automatización de Flujos', en: 'Workflow Automation' },
+    ],
   },
   {
     company: {
@@ -94,7 +121,15 @@ export const experience: ExperienceItem[] = [
         en: 'Code reviews, quality practices and real-time communication with SignalR.',
       },
     ],
-    technologies: ['.NET MAUI', '.NET MVC', 'Angular', 'Azure Functions', 'Analisis Tecnico', 'Relacion con Clientes', 'React Native'],
+    technologies: [
+      '.NET MAUI',
+      '.NET MVC',
+      'Angular',
+      'Azure Functions',
+      { es: 'Análisis Técnico', en: 'Technical Analysis' },
+      { es: 'Relación con Clientes', en: 'Client Relations' },
+      'React Native',
+    ],
   },
   {
     company: {

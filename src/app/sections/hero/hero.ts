@@ -17,16 +17,6 @@ import { personal } from '../../core/data/personal.data';
       position: relative;
       overflow: hidden;
     }
-    .hero-grid-bg {
-      position: absolute; inset: 0; z-index: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 48px 48px;
-      opacity: 0.35;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-      pointer-events: none;
-    }
     .hero-content { position: relative; z-index: 1; max-width: 900px; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 0.5rem;
@@ -119,7 +109,6 @@ import { personal } from '../../core/data/personal.data';
   `],
   template: `
     <section id="hero">
-      <div class="hero-grid-bg" aria-hidden="true"></div>
       <div class="container-page hero-content">
         <!-- <div class="hero-badge anim-fadeup delay-1">{{ 'hero.eyebrow' | t }}</div> -->
 
