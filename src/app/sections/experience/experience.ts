@@ -179,8 +179,8 @@ const COLLAPSED_COUNT = 3;
                 <p class="tl-desc">{{ line | loc }}</p>
               }
               <div class="tl-tags">
-                @for (t of exp.technologies; track t) {
-                  <span class="tl-tag">{{ t }}</span>
+                @for (t of exp.technologies; track $index) {
+                  <span class="tl-tag">{{ t | loc }}</span>
                 }
               </div>
             </article>

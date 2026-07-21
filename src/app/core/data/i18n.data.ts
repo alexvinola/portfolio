@@ -20,13 +20,13 @@ export const translations: Record<Lang, Dict> = {
     'hero.cta.contact': 'Contactar',
     'hero.cta.cv': 'CV',
     'hero.desc.html':
-      'Full Stack Developer especializado en <strong>.NET y Angular</strong>, microservicios y Clean Architecture. Construyo APIs, integro sistemas y exploro IA aplicada al desarrollo: LLMs, agentes y automatización.',
+      'Full Stack Developer especializado en <strong>.NET, JAVA y Angular</strong>, microservicios y Clean Architecture. Construyo APIs, integro sistemas y exploro IA aplicada al desarrollo: LLMs, agentes y automatización.',
 
     'about.label': '01 — About',
     'about.title.line1': 'Construyo sistemas,',
     'about.title.line2': 'no solo código.',
     'about.p1':
-      'Full Stack Developer especializado en .NET y Angular. Trabajo con multiples arquitecturas como microservicios, Clean Architecture y principios SOLID. Desarrollo APIs REST, integro sistemas externos y proceso datos en tiempo real.',
+      'Full Stack Developer especializado en .NET, JAVA y Angular. Trabajo con multiples arquitecturas como microservicios, Clean Architecture y principios SOLID. Desarrollo APIs REST, integro sistemas externos y proceso datos en tiempo real.',
     'about.p2':
       'En paralelo investigo IA aplicada al desarrollo: LLMs, agentes y evaluación de modelos. También exploro Go, Python y stacks modernos para no quedarme nunca quieto.',
     'about.lang.es': 'Español — Nativo',
@@ -79,13 +79,13 @@ export const translations: Record<Lang, Dict> = {
     'hero.cta.contact': 'Get in touch',
     'hero.cta.cv': 'CV',
     'hero.desc.html':
-      'Full Stack Developer specialized in <strong>.NET and Angular</strong>, microservices and Clean Architecture. I build APIs, integrate systems and explore AI applied to development: LLMs, agents and automation.',
+      'Full Stack Developer specialized in <strong>.NET, JAVA and Angular</strong>, microservices and Clean Architecture. I build APIs, integrate systems and explore AI applied to development: LLMs, agents and automation.',
 
     'about.label': '01 — About',
     'about.title.line1': 'Crafting systems,',
     'about.title.line2': 'not just code.',
     'about.p1':
-      'Full Stack Developer specialized in .NET and Angular. I work with microservices architectures, Clean Architecture and SOLID principles. I build REST APIs, integrate external systems and process real-time data.',
+      'Full Stack Developer specialized in .NET, JAVA and Angular. I work with microservices architectures, Clean Architecture and SOLID principles. I build REST APIs, integrate external systems and process real-time data.',
     'about.p2':
       'On the side I research applied AI: LLMs, agents and model evaluation. I also explore Go, Python and modern stacks to keep growing.',
     'about.lang.es': 'Spanish — Native',

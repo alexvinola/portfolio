@@ -1,6 +1,41 @@
 import { ExperienceItem } from '../models/experience.model';
 
 export const experience: ExperienceItem[] = [
+    {
+    company: {
+      es: 'Hiberus · Zaragoza, España',
+      en: 'Hiberus · Zaragoza, Spain',
+    },
+    role: 'Software Engineer — AI Development',
+    period: {
+      es: 'Jul 2026 — Actualidad',
+      en: 'Jul 2026 — Present',
+    },
+    current: true,
+    description: [
+      {
+        es: 'Desarrollo de aplicaciones en Java (Spring Boot) y Angular, participando en la definición de la arquitectura del sistema desde su fase inicial.',
+        en: 'Development of applications in Java (Spring Boot) and Angular, participating in defining the system architecture from its initial phase.',
+      },
+      {
+        es: 'Integro desarrollo asistido por IA en el flujo de trabajo, orquestando agentes de IA para tareas de análisis, generación de código y documentación técnica.',
+        en: 'I integrate AI-assisted development into the workflow, orchestrating AI agents for analysis, code generation, and technical documentation tasks.',
+      },
+    ],
+    technologies: [
+      'Java',
+      'Angular',
+      { es: 'Arquitectura', en: 'Architecture' },
+      { es: 'Arquitectura Hexagonal', en: 'Hexagonal Architecture' },
+      'TypeScript',
+      { es: 'Análisis Técnico', en: 'Technical Analysis' },
+      'Claude',
+      'Github Copilot',
+      'Kubernetes',
+      'GIS',
+      'SCRUM',
+    ],
+  },
   {
     company: {
       es: 'Hiberus · Zaragoza, España',
@@ -8,10 +43,10 @@ export const experience: ExperienceItem[] = [
     },
     role: 'Full Stack Developer — Sportium',
     period: {
-      es: 'Ene 2025 — Actualidad',
-      en: 'Jan 2025 — Present',
+      es: 'Ene 2025 — Jul 2026',
+      en: 'Jan 2025 — Jul 2026',
     },
-    current: true,
+    current: false,
     description: [
       {
         es: 'Parte del equipo de desarrollo de Sportium. Construyo nuevos microservicios para habilitar funcionalidades del producto, mejorando escalabilidad y rendimiento.',
@@ -22,7 +57,17 @@ export const experience: ExperienceItem[] = [
         en: 'Frontend work with Angular inside a Full Stack .NET + Angular architecture.',
       },
     ],
-    technologies: ['Angular', '.NET', 'C#', 'Microservices', 'TypeScript', 'Analisis Tecnico', 'Arquitectura', 'SignalR', 'SCRUM'],
+    technologies: [
+      'Angular',
+      '.NET',
+      'C#',
+      { es: 'Microservicios', en: 'Microservices' },
+      'TypeScript',
+      { es: 'Análisis Técnico', en: 'Technical Analysis' },
+      { es: 'Arquitectura', en: 'Architecture' },
+      'SignalR',
+      'SCRUM',
+    ],
   },
   {
     company: {
@@ -45,7 +90,12 @@ export const experience: ExperienceItem[] = [
         en: 'Agent orchestration, reusable skills and workflow automation to improve internal productivity.',
       },
     ],
-    technologies: ['Python', 'GenAI', 'LLM Agents', 'Workflow Automation'],
+    technologies: [
+      'Python',
+      'GenAI',
+      { es: 'Agentes LLM', en: 'LLM Agents' },
+      { es: 'Automatización de Flujos', en: 'Workflow Automation' },
+    ],
   },
   {
     company: {
@@ -71,7 +121,15 @@ export const experience: ExperienceItem[] = [
         en: 'Code reviews, quality practices and real-time communication with SignalR.',
       },
     ],
-    technologies: ['.NET MAUI', '.NET MVC', 'Angular', 'Azure Functions', 'Analisis Tecnico', 'Relacion con Clientes', 'React Native'],
+    technologies: [
+      '.NET MAUI',
+      '.NET MVC',
+      'Angular',
+      'Azure Functions',
+      { es: 'Análisis Técnico', en: 'Technical Analysis' },
+      { es: 'Relación con Clientes', en: 'Client Relations' },
+      'React Native',
+    ],
   },
   {
     company: {

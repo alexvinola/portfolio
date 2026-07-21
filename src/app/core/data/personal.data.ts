@@ -9,7 +9,7 @@ export const personal = {
   name: 'Alejandro Viñola',
   shortName: 'Alex Viñola',
   role: 'Full Stack Developer',
-  tagline: 'C# · TypeScript · Angular · .NET · IA',
+  tagline: 'Java · C# · TypeScript · Angular · Spring Boot · IA',
   location: {
     es: 'Zaragoza, Aragón, España',
     en: 'Zaragoza, Aragón, Spain',
@@ -33,6 +33,7 @@ export const personal = {
   ] as PersonalStat[],
   typedRoles: [
     'Full Stack Developer',
+    'Java Engineer',
     'Angular Specialist',
     '.NET Engineer',
     'AI Tinkerer',
