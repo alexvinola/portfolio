@@ -76,10 +76,10 @@ export const experience: ExperienceItem[] = [
     },
     role: 'AI Research Collaborator',
     period: {
-      es: 'Abr 2026 — Actualidad',
-      en: 'Apr 2026 — Present',
+      es: 'Abr 2026 — Jul 2026',
+      en: 'Apr 2026 — Jul 2026',
     },
-    current: true,
+    current: false,
     description: [
       {
         es: 'Colaboración interna en iniciativas de I+D en IA: diseño e implementación de herramientas basadas en GenAI en Python.',

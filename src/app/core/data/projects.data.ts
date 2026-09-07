@@ -2,32 +2,35 @@ import { ProjectItem } from '../models/project.model';
 
 export const projects: ProjectItem[] = [
   {
-    name: 'NoumourDevs',
+    name: 'Stemma CLI',
     tagline: {
-      es: 'Desarrollo de software con IA',
-      en: 'Software development with AI',
+      es: 'Un contexto. Todos los agentes de código.',
+      en: 'One context. Every coding agent.',
     },
     description: {
-      es: 'Web técnica sobre Spec-Driven Development, Clean Architecture y cómo la IA puede potenciar estas prácticas. Incluye artículos, ejemplos de código y recursos para desarrolladores interesados en mejorar su arquitectura y calidad de código con ayuda de la IA.',
-      en: 'Technical site on Spec-Driven Development, Clean Architecture and how AI can boost these practices. Articles, code examples and resources for developers who want to improve their architecture and code quality with the help of AI.',
+      es: 'Compilador determinista y local-first para el contexto de los agentes de código. Escribes la guía del repositorio una sola vez en un proyecto canónico y Stemma la compila al formato nativo de cada agente, así que CLAUDE.md, .github/copilot-instructions.md, AGENTS.md o .kiro/steering/ dejan de ser copias que divergen y pasan a ser artefactos generados y verificados en CI. No es una herramienta de IA: no hay modelo de lenguaje, ni llamadas de red, ni telemetría; cada decisión sale de una gramática explícita.',
+      en: 'A deterministic, local-first compiler for coding-agent context. You write your repository guidance once in a canonical project and Stemma compiles it into every agent\'s native format, so CLAUDE.md, .github/copilot-instructions.md, AGENTS.md or .kiro/steering/ stop being copies that drift and become build artifacts, generated and verified in CI. It is not an AI tool: no language model, no network calls, no telemetry — every decision comes from an explicit grammar.',
     },
-    technologies: ['Angular', 'AWS', 'IA'],
-    category: 'ai',
+    technologies: ['Go', 'CLI', 'Compiler', 'AI Agents', 'CI/CD'],
+    category: 'tooling',
     highlights: [
       {
-        es: 'Aprendizaje sobre orquestación de agentes y workflows multi-paso',
-        en: 'Learning resources on agent orchestration and multi-step workflows',
+        es: 'Determinista y explicable: mismo input, mismos bytes, y cada entidad recibe un resultado trazable por target (exact, adapted, lossy, blocked o skipped)',
+        en: 'Deterministic and explainable: same input, same bytes, and every entity gets one traceable outcome per target (exact, adapted, lossy, blocked or skipped)',
       },
       {
-        es: 'Información actualizada sobre modelos de IA y su aplicación práctica en desarrollo de software',
-        en: 'Up-to-date insights on AI models and their practical application in software development',
+        es: 'Importa y exporta GitHub Copilot, Claude Code, Codex (AGENTS.md) y Kiro, con una matriz de compatibilidad trazada a la documentación oficial de cada proveedor',
+        en: 'Imports and exports GitHub Copilot, Claude Code, Codex (AGENTS.md) and Kiro, with a capability matrix traced to each provider\'s official documentation',
       },
       {
-        es: 'Evolución de roles y responsabilidades de un desarrollador en la era de la IA',
-        en: "How a developer's roles and responsibilities are evolving in the AI era",
+        es: '~12.000 líneas de Go sin dependencias, ~230 tests, fixtures golden por proveedor, fuzzing y CI multiplataforma en Linux, macOS y Windows',
+        en: '~12,000 lines of Go with zero dependencies, ~230 tests, golden fixtures per provider, fuzz targets and cross-platform CI on Linux, macOS and Windows',
       },
     ],
-    links: { demo: 'https://noumordevs.alexvinola.com' },
+    links: {
+      github: 'https://github.com/alexvinola/stemma-cli',
+      demo: 'https://stemmacli.alexvinola.com',
+    },
     featured: true,
     year: '2026',
   },
