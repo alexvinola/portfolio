@@ -1,16 +1,18 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, viewChild } from '@angular/core';
 import { TranslatePipe } from '../../core/pipes/translate.pipe';
 import { LocalizedPipe } from '../../core/pipes/localized.pipe';
 import { RevealDirective } from '../../core/directives/reveal.directive';
 import { SectionHeading } from '../../shared/ui/section-heading/section-heading';
 import { SocialIcon } from '../../shared/ui/social-icons/social-icons';
+import { ProjectDetail } from '../../shared/ui/project-detail/project-detail';
+import { ProjectItem } from '../../core/models/project.model';
 import { projects } from '../../core/data/projects.data';
 import { personal } from '../../core/data/personal.data';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [TranslatePipe, LocalizedPipe, RevealDirective, SectionHeading, SocialIcon],
+  imports: [TranslatePipe, LocalizedPipe, RevealDirective, SectionHeading, SocialIcon, ProjectDetail],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [`
     #projects-wrap { max-width: 1100px; margin: 0 auto; }
@@ -24,6 +26,7 @@ import { personal } from '../../core/data/personal.data';
 
     .pc {
       position: relative;
+      cursor: pointer;
       overflow: hidden;
       border: 1px solid var(--border);
       background:
@@ -41,6 +44,7 @@ import { personal } from '../../core/data/personal.data';
       background: radial-gradient(60% 80% at 100% 0%, color-mix(in oklch, var(--accent) 22%, transparent), transparent 60%);
       opacity: 0; transition: opacity .35s ease; pointer-events: none;
     }
+    .pc:focus-within { border-color: var(--accent); }
     .pc:hover {
       border-color: var(--accent);
       transform: translateY(-3px);
@@ -57,8 +61,10 @@ import { personal } from '../../core/data/personal.data';
     }
     .pc:hover .pc-idx { opacity: 0.26; color: var(--accent); }
 
+    .pc-private { margin-top: .75rem; color: var(--text2); font: .75rem var(--font-mono); }
+    button.pc-link { cursor: pointer; background: transparent; }
     .pc-head {
-      display: flex; align-items: flex-start;
+      display: flex; align-items: flex-start; flex-wrap: wrap;
       justify-content: space-between; gap: 1rem;
     }
     .pc-cat {
@@ -85,16 +91,6 @@ import { personal } from '../../core/data/personal.data';
       margin-top: 1rem; font-size: 0.875rem;
       color: var(--text2); line-height: 1.7; max-width: 62ch;
     }
-    .pc-highlights {
-      margin-top: 1rem; list-style: none; padding: 0;
-      display: flex; flex-direction: column; gap: 0.4rem;
-    }
-    .pc-highlights li {
-      font-size: 0.8125rem; color: var(--text2);
-      display: flex; gap: 0.55rem; line-height: 1.5;
-    }
-    .pc-highlights li::before { content: '▸'; color: var(--accent); flex-shrink: 0; }
-
     .pc-tags {
       margin-top: 1.3rem; display: flex; flex-wrap: wrap; gap: 0.4rem;
     }
@@ -146,7 +142,7 @@ import { personal } from '../../core/data/personal.data';
 
         <div [appReveal]="0" class="pg">
           @for (p of items; track p.name; let i = $index) {
-            <article class="pc" [class.feat]="p.featured && i === 0">
+            <article class="pc" [class.feat]="p.featured && i === 0" (click)="openProject(p, $event)">
               <span class="pc-idx" aria-hidden="true">{{ idx(i) }}</span>
 
               <div class="pc-head">
@@ -156,14 +152,10 @@ import { personal } from '../../core/data/personal.data';
                 </div>
                 <span class="pc-cat"><span class="d"></span>{{ catLabel(p.category) }}@if (p.year) { · {{ p.year }} }</span>
               </div>
-              <p class="pc-desc">{{ p.description | loc }}</p>
+              <p class="pc-desc">{{ (p.summary || p.description) | loc }}</p>
 
-              @if (p.highlights?.length) {
-                <ul class="pc-highlights">
-                  @for (h of p.highlights; track $index) {
-                    <li>{{ h | loc }}</li>
-                  }
-                </ul>
+              @if (p.sourcePrivate) {
+                <p class="pc-private">{{ 'projects.detail.private' | t }}</p>
               }
 
               <div class="pc-tags">
@@ -173,7 +165,11 @@ import { personal } from '../../core/data/personal.data';
               </div>
 
               <div class="pc-links">
-                @if (p.links?.github) {
+                <button type="button" class="pc-link" aria-haspopup="dialog"
+                  [attr.aria-label]="('projects.cta.details' | t) + ': ' + p.name">
+                  {{ 'projects.cta.details' | t }} <span aria-hidden="true">↗</span>
+                </button>
+                @if (!p.sourcePrivate && p.links?.github) {
                   <a [href]="p.links!.github" target="_blank" rel="noopener" class="pc-link" [attr.aria-label]="p.name + ' — GitHub'">
                     <app-social-icon name="github" size="14" />{{ 'projects.cta.code' | t }}
                   </a>
@@ -196,10 +192,21 @@ import { personal } from '../../core/data/personal.data';
         <a [href]="github" target="_blank" rel="noopener" class="more-link">{{ 'projects.cta.all' | t }} ↗</a>
       </div>
     </section>
+    <app-project-detail />
   `,
 })
 export class Projects {
+  private readonly detail = viewChild.required(ProjectDetail);
   protected items = projects;
+
+  protected openProject(project: ProjectItem, event: MouseEvent): void {
+    const target = event.target as HTMLElement;
+    if (target.closest('a')) return;
+    const card = event.currentTarget as HTMLElement;
+    const opener = card.querySelector<HTMLButtonElement>('button');
+    if (opener) this.detail().open(project, opener);
+  }
+
   protected github = personal.social.github;
 
   private categoryLabels: Record<string, string> = {

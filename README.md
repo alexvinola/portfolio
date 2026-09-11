@@ -71,6 +71,45 @@ npm run build
 npm run serve:ssr:portfolio_ng
 ```
 
+## Proyectos y galerías
+
+Los proyectos se editan en `src/app/core/data/projects.data.ts`. El orden del array
+es el orden de las tarjetas. Todas abren un modal: `summary` es el resumen opcional
+de la tarjeta; `description`, `highlights` y `details` forman el contenido ampliado.
+Los textos admiten `{ es: '…', en: '…' }`.
+
+Para añadir capturas a **cualquier proyecto**:
+
+1. Guarda las imágenes en `public/projects/<proyecto>/` (por ejemplo,
+   `public/projects/harmonia/helpdesk.webp`).
+2. Añade a su objeto una propiedad `gallery` con las imágenes en el orden deseado:
+
+```typescript
+gallery: [
+  {
+    src: '/projects/harmonia/helpdesk.webp',
+    alt: {
+      es: 'Listado de peticiones de soporte en Harmonia',
+      en: 'Support request list in Harmonia',
+    },
+    caption: { es: 'Helpdesk: prioridad y asignación.', en: 'Helpdesk: priority and assignment.' },
+  },
+],
+```
+
+La URL empieza en `/projects/`, sin `public`. Usa capturas reales y rutas únicas;
+`alt` es obligatorio y `caption` opcional. Se recomienda WebP para reducir el peso.
+La galería permite navegar con miniaturas, botones y flechas del teclado cuando
+el foco está en ella, y abrir la captura a tamaño completo. Con una sola imagen
+se ocultan los controles; si `gallery` está vacío o no existe, no se muestra el bloque.
+Harmonia incluye 15 capturas en `public/projects/harmonia/`. Su orden, textos
+alternativos y pies en español e inglés se editan en
+`src/app/core/data/harmonia.gallery.ts`, enlazado desde `projects.data.ts`.
+
+`sourcePrivate: true` muestra «Código privado» y oculta el enlace al repositorio.
+Los enlaces `github`, `demo` y `article` son opcionales. `authorship` y `status`
+permiten indicar la autoría y el estado real de cada proyecto.
+
 ## 📫 ¡Gracias por visitar mi portfolio!
 
 Si tienes cualquier pregunta, idea o colaboración en mente, escríbeme directamente a **hello@alexvinola.com** o desde el formulario de contacto del sitio.
