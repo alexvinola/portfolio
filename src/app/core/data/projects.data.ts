@@ -1,8 +1,13 @@
 import { ProjectItem } from '../models/project.model';
+import { harmoniaGallery } from './harmonia.gallery';
 
 export const projects: ProjectItem[] = [
   {
     name: 'Stemma CLI',
+    summary: {
+      es: 'Escribe el contexto de tu repositorio una vez y compílalo al formato nativo de cada agente de código. Un compilador determinista, local y sin dependencias, con artefactos verificados en CI.',
+      en: 'Write your repository context once and compile it into each coding agent’s native format. A deterministic, local compiler with zero dependencies and CI-verified artifacts.',
+    },
     tagline: {
       es: 'Un contexto. Todos los agentes de código.',
       en: 'One context. Every coding agent.',
@@ -31,6 +36,76 @@ export const projects: ProjectItem[] = [
       github: 'https://github.com/alexvinola/stemma-cli',
       demo: 'https://stemmacli.alexvinola.com',
     },
+    featured: true,
+    year: '2026',
+  },
+  {
+    name: 'Harmonia',
+    tagline: {
+      es: 'Soporte e ingeniería, conectados.',
+      en: 'Support and engineering, connected.',
+    },
+    summary: {
+      es: 'Plataforma multi-tenant de Helpdesk y gestión de incidentes. Conecta las peticiones de clientes con el trabajo de ingeniería, con workflows configurables mediante un editor visual.',
+      en: 'A multi-tenant Helpdesk and incident management platform. It connects customer requests with engineering work, with configurable workflows built in a visual editor.',
+    },
+    description: {
+      es: 'Harmonia reúne el soporte al cliente y la gestión de incidentes técnicos en una misma aplicación. Una petición de Helpdesk puede escalarse a un incidente que ingeniería acepta o devuelve, manteniendo el contexto y la trazabilidad en ambos lados. Cada organización trabaja con sus propios datos, roles y flujos configurables.',
+      en: 'Harmonia brings customer support and technical incident management into one application. A Helpdesk request can be escalated to an incident that engineering accepts or returns, preserving context and traceability on both sides. Each organization has its own isolated data, roles and configurable workflows.',
+    },
+    status: { es: 'Funcional · En evolución', en: 'Functional · Evolving' },
+    authorship: {
+      es: 'Proyecto personal de Alejandro Viñola · Desarrollo full stack',
+      en: 'A personal project by Alejandro Viñola · Full stack development',
+    },
+    sourcePrivate: true,
+    technologies: ['Java', 'Spring Boot', 'Spring Modulith', 'Angular', 'PostgreSQL', 'OpenAPI', 'Docker'],
+    category: 'web',
+    highlights: [
+      {
+        es: 'Helpdesk con integración de email, escalado a incidentes y postmortems con acciones de seguimiento.',
+        en: 'Helpdesk with email integration, escalation to incidents and postmortems with follow-up actions.',
+      },
+      {
+        es: 'Editor visual de workflows en SVG, con borradores y versiones publicadas inmutables.',
+        en: 'An SVG visual workflow editor with drafts and immutable published versions.',
+      },
+      {
+        es: 'Monolito modular con arquitectura hexagonal y pruebas de integración sobre PostgreSQL real.',
+        en: 'A modular monolith with hexagonal architecture and integration tests against real PostgreSQL.',
+      },
+    ],
+    details: [
+      {
+        title: { es: 'Por qué lo construí', en: 'Why I built it' },
+        body: {
+          es: 'Quería que mi portfolio reflejara también lo que hago en mi día a día: desarrollar aplicaciones de negocio completas. Harmonia nació para dar espacio a ese trabajo junto a mis proyectos de investigación en IA, llevando una idea desde el dominio y la API hasta la interfaz y el despliegue. La aplicación ya es funcional y continúo mejorándola.',
+          en: 'I wanted my portfolio to also reflect my day-to-day work: building complete business applications. Harmonia grew out of that goal alongside my AI research projects, taking an idea from the domain and API through to the interface and deployment. The application is already functional and I continue to improve it.',
+        },
+      },
+      {
+        title: { es: 'Del correo al incidente', en: 'From email to incident' },
+        body: {
+          es: 'Los correos entrantes se convierten en peticiones y las respuestas mantienen el mismo hilo. Soporte gestiona prioridad, asignación y conversación; ingeniería trabaja con severidades, participantes, evidencias y postmortems. El escalado conecta ambos dominios sin perder su independencia.',
+          en: 'Incoming emails become requests and replies stay in the same thread. Support manages priority, assignment and conversation; engineering works with severity levels, participants, evidence and postmortems. Escalation connects both domains while keeping them independent.',
+        },
+      },
+      {
+        title: { es: 'Flujos propios para cada organización', en: 'Workflows for each organization' },
+        body: {
+          es: 'El editor visual permite definir estados, transiciones, roles y campos obligatorios sobre un canvas SVG propio. Los flujos se editan como borradores y se publican como versiones inmutables: cambiar un flujo no altera las peticiones creadas con una versión anterior.',
+          en: 'The visual editor defines states, transitions, roles and required fields on a custom SVG canvas. Workflows are edited as drafts and published as immutable versions: changing a workflow does not alter requests created with an earlier version.',
+        },
+      },
+      {
+        title: { es: 'Arquitectura y fiabilidad', en: 'Architecture and reliability' },
+        body: {
+          es: 'Backend en Java y Spring Boot, organizado por capacidades de negocio con Spring Modulith y arquitectura hexagonal. API contract-first con OpenAPI, frontend en Angular con Signals y PostgreSQL con Liquibase. Las decisiones de fiabilidad incluyen idempotencia, concurrencia optimista y sesiones con cookie HttpOnly y protección CSRF. Tests con Testcontainers y Vitest, CI con GitHub Actions y despliegue con Docker.',
+          en: 'A Java and Spring Boot backend organized by business capability with Spring Modulith and hexagonal architecture. A contract-first OpenAPI API, an Angular frontend with Signals and PostgreSQL with Liquibase. Reliability decisions include idempotency, optimistic concurrency and HttpOnly cookie sessions with CSRF protection. Tests use Testcontainers and Vitest, with GitHub Actions CI and Docker deployment.',
+        },
+      },
+    ],
+    gallery: harmoniaGallery,
     featured: true,
     year: '2026',
   },
@@ -94,21 +169,6 @@ export const projects: ProjectItem[] = [
     category: 'web',
     links: { github: 'https://github.com/alexvinola/portfolio', demo: 'https://alexvinola.com' },
     featured: true,
-    year: '2026',
-  },
-  {
-    name: 'Membership Python',
-    tagline: {
-      es: 'Servicio backend en Python',
-      en: 'Backend service in Python',
-    },
-    description: {
-      es: 'Pequeño servicio para gestionar membresías construido como práctica de arquitectura limpia en el ecosistema Python: capas separadas, tipado y tests.',
-      en: 'A small membership-management service built as a clean-architecture exercise in the Python ecosystem: separated layers, typing and tests.',
-    },
-    technologies: ['Python', 'Clean Architecture', 'REST API'],
-    category: 'tooling',
-    links: { github: 'https://github.com/alexvinola/membership-python' },
     year: '2026',
   },
 ];
