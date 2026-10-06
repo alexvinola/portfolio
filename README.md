@@ -31,7 +31,7 @@ Decidí rehacer este portfolio como oportunidad para:
 
 ### Decisiones técnicas destacables
 
-- **Sin librerías de animación, iconos ni i18n externas.** Animaciones con `IntersectionObserver` propio, iconos en SVG inline + algunos vía [Simple Icons](https://simpleicons.org) y [Devicon](https://devicon.dev), i18n con `signal` + un pipe propio (`| loc`).
+- **Sin librerías de animación, iconos ni i18n externas.** Animaciones con `IntersectionObserver` propio, iconos en SVG inline y archivos locales de [Simple Icons](https://simpleicons.org) y [Devicon](https://devicon.dev), i18n con `signal` + un pipe propio (`| loc`).
 - **Color tokens en OKLCH** con tema dark/light que el usuario puede alternar (con persistencia en `localStorage`).
 - **Scroll-spy** propio que sincroniza la URL con la sección visible (`/` → `/#about` → `/#contact`...) usando `IntersectionObserver` + `history.replaceState`.
 - **Tipografías Space Grotesk + JetBrains Mono** para una estética técnica/brutalist controlada.
@@ -46,7 +46,7 @@ Decidí rehacer este portfolio como oportunidad para:
   - Skip-link, `prefers-reduced-motion`, contraste WCAG AAA en el tema oscuro suavizado.
 - ✅ **Optimización del rendimiento**:
   - Pre-render estático de la ruta principal → first paint instantáneo.
-  - SVGs locales para los logos clave (Microsoft, Amazon, OpenAI…), evitando dependencias de CDNs externos que cambian licencias.
+  - Todos los logos de tecnologías son SVGs locales, evitando timeouts y cambios de CDNs externos. Los de Simple Icons viven en `public/logos/simple-icons/`, con su versión y licencia documentadas.
   - Bundle inicial ~85 kB transferidos.
 - ✅ **Código modular y escalable**: separación clara `core/` (data, modelos, servicios, pipes), `shared/ui/`, `layout/`, `sections/`, `pages/`.
 - ✅ **Despliegue profesional con Cloudflare**:

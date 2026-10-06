@@ -8,7 +8,7 @@ export interface PersonalStat {
 export const personal = {
   name: 'Alejandro Viñola',
   shortName: 'Alex Viñola',
-  role: 'Full Stack Developer',
+  role: 'Senior Software Engineer',
   tagline: 'Java · C# · TypeScript · Angular · Spring Boot · IA',
   location: {
     es: 'Zaragoza, Aragón, España',
@@ -27,16 +27,18 @@ export const personal = {
   },
   stats: [
     { num: '3+',  label: { es: 'años exp.',     en: 'years exp.' } },
-    { num: '2',   label: { es: 'roles activos', en: 'current roles' } },
+    { num: '2',   label: { es: 'empresas',      en: 'companies' } },
     { num: 'B2',  label: { es: 'inglés',        en: 'english' } },
     { num: '∞',   label: { es: 'aprendiendo',   en: 'learning' } },
   ] as PersonalStat[],
   typedRoles: [
+    'Senior Software Engineer',
+    'GenAI Engineer',
+    'AI Agents Builder',
     'Full Stack Developer',
     'Java Engineer',
     'Angular Specialist',
     '.NET Engineer',
-    'AI Tinkerer',
     'Aspiring Architect & Tech Lead',
   ],
 };

@@ -53,7 +53,7 @@ export const projects: ProjectItem[] = [
       es: 'Harmonia reúne el soporte al cliente y la gestión de incidentes técnicos en una misma aplicación. Una petición de Helpdesk puede escalarse a un incidente que ingeniería acepta o devuelve, manteniendo el contexto y la trazabilidad en ambos lados. Cada organización trabaja con sus propios datos, roles y flujos configurables.',
       en: 'Harmonia brings customer support and technical incident management into one application. A Helpdesk request can be escalated to an incident that engineering accepts or returns, preserving context and traceability on both sides. Each organization has its own isolated data, roles and configurable workflows.',
     },
-    status: { es: 'Funcional · En evolución', en: 'Functional · Evolving' },
+    status: { es: 'Funcional · Integrando un agente de IA', en: 'Functional · Integrating an AI agent' },
     authorship: {
       es: 'Proyecto personal de Alejandro Viñola · Desarrollo full stack',
       en: 'A personal project by Alejandro Viñola · Full stack development',
@@ -73,6 +73,10 @@ export const projects: ProjectItem[] = [
       {
         es: 'Monolito modular con arquitectura hexagonal y pruebas de integración sobre PostgreSQL real.',
         en: 'A modular monolith with hexagonal architecture and integration tests against real PostgreSQL.',
+      },
+      {
+        es: 'En desarrollo: Kadmos, un agente de IA que investiga incidencias, con evals, jueces LLM y trazas en MLflow.',
+        en: 'In progress: Kadmos, an AI agent that investigates incidents, with evals, LLM judges and MLflow tracing.',
       },
     ],
     details: [
@@ -102,6 +106,13 @@ export const projects: ProjectItem[] = [
         body: {
           es: 'Backend en Java y Spring Boot, organizado por capacidades de negocio con Spring Modulith y arquitectura hexagonal. API contract-first con OpenAPI, frontend en Angular con Signals y PostgreSQL con Liquibase. Las decisiones de fiabilidad incluyen idempotencia, concurrencia optimista y sesiones con cookie HttpOnly y protección CSRF. Tests con Testcontainers y Vitest, CI con GitHub Actions y despliegue con Docker.',
           en: 'A Java and Spring Boot backend organized by business capability with Spring Modulith and hexagonal architecture. A contract-first OpenAPI API, an Angular frontend with Signals and PostgreSQL with Liquibase. Reliability decisions include idempotency, optimistic concurrency and HttpOnly cookie sessions with CSRF protection. Tests use Testcontainers and Vitest, with GitHub Actions CI and Docker deployment.',
+        },
+      },
+      {
+        title: { es: 'En desarrollo: Kadmos, el agente de incidencias', en: 'In progress: Kadmos, the incident agent' },
+        body: {
+          es: 'Kadmos es un agente en Python que estoy construyendo para integrarlo en Harmonia. Investiga una incidencia separando hechos, hipótesis con sus evidencias, información que falta y próximos pasos, y comprueba que cada evidencia citada existe. Lo desarrollo por hitos sobre incidencias sintéticas: primero salida estructurada con trazas en MLflow; después evals con un dataset etiquetado, scorers deterministas, jueces LLM y un gate contra una línea base aprobada; y ahora tool calling, para que el modelo pida los logs, métricas y notas que necesita en lugar de recibirlos todos.',
+          en: 'Kadmos is a Python agent I am building to integrate into Harmonia. It investigates an incident by separating facts, hypotheses with their evidence, missing information and next steps, and checks that every cited piece of evidence exists. I am building it in milestones on synthetic incidents: first structured output with MLflow tracing; then evals with a labeled dataset, deterministic scorers, LLM judges and a gate against an approved baseline; and now tool calling, so the model requests the logs, metrics and notes it needs instead of receiving them all.',
         },
       },
     ],

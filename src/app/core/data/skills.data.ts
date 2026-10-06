@@ -2,22 +2,21 @@ import { ConceptualSkillGroup, SkillGroup } from '../models/skill.model';
 
 /**
  * Logos:
- *  - `slug` + `color` → cargados desde https://cdn.simpleicons.org/{slug}/{color}
- *  - `customIcon`     → ruta local en /public (tiene prioridad sobre slug). Útil para los logos
- *                       que simpleicons retiró por temas de licencia (Azure, AWS, C#, MS, OpenAI, …).
+ *  - `customIcon` → ruta local en /public; no se depende de CDNs externos.
+ *  - Los SVGs de Simple Icons están en /public/logos/simple-icons, con el color en el propio SVG.
  */
 export const skills: SkillGroup[] = [
   {
     id: 'frontend',
     title: 'Frontend',
     items: [
-      { name: 'Angular', slug: 'angular', color: 'dd0031', level: 'core' },
-      { name: 'TypeScript', slug: 'typescript', color: '3178c6', level: 'core' },
-      { name: 'JavaScript', slug: 'javascript', color: 'f7df1e', level: 'core' },
-      { name: 'HTML5', slug: 'html5', color: 'e34f26', level: 'advanced' },
-      { name: 'Sass / SCSS', slug: 'sass', color: 'cc6699', level: 'advanced' },
-      { name: 'Tailwind', slug: 'tailwindcss', color: '38bdf8', level: 'advanced' },
-      { name: 'React', slug: 'react', color: '61dafb', level: 'advanced' },
+      { name: 'Angular', customIcon: '/logos/simple-icons/angular.svg', level: 'core' },
+      { name: 'TypeScript', customIcon: '/logos/simple-icons/typescript.svg', level: 'core' },
+      { name: 'JavaScript', customIcon: '/logos/simple-icons/javascript.svg', level: 'core' },
+      { name: 'HTML5', customIcon: '/logos/simple-icons/html5.svg', level: 'advanced' },
+      { name: 'Sass / SCSS', customIcon: '/logos/simple-icons/sass.svg', level: 'advanced' },
+      { name: 'Tailwind', customIcon: '/logos/simple-icons/tailwindcss.svg', level: 'advanced' },
+      { name: 'React', customIcon: '/logos/simple-icons/react.svg', level: 'advanced' },
     ],
   },
   {
@@ -27,10 +26,10 @@ export const skills: SkillGroup[] = [
       { name: '.NET', customIcon: '/logos/dotnet.svg', level: 'core' },
       { name: 'C#', customIcon: '/logos/csharp.svg', level: 'core' },
       { name: 'JAVA', customIcon: '/logos/java.svg', level: 'core' },
-      { name: 'Python', slug: 'python', color: '3776ab', level: 'advanced' },
-      { name: 'Node.js', slug: 'nodedotjs', color: '5fa04e', level: 'familiar' },
-      { name: 'GraphQL', slug: 'graphql', color: 'e10098', level: 'familiar' },
-      { name: 'Go', slug: 'go', color: '00add8', level: 'familiar' },
+      { name: 'Python', customIcon: '/logos/simple-icons/python.svg', level: 'advanced' },
+      { name: 'Node.js', customIcon: '/logos/simple-icons/nodedotjs.svg', level: 'familiar' },
+      { name: 'GraphQL', customIcon: '/logos/simple-icons/graphql.svg', level: 'familiar' },
+      { name: 'Go', customIcon: '/logos/simple-icons/go.svg', level: 'familiar' },
     ],
   },
   {
@@ -38,9 +37,9 @@ export const skills: SkillGroup[] = [
     title: 'Data',
     items: [
       { name: 'SQL Server', customIcon: '/logos/sqlserver.svg', level: 'core' },
-      { name: 'PostgreSQL', slug: 'postgresql', color: '336791', level: 'core' },
-      { name: 'MongoDB', slug: 'mongodb', color: '47a248', level: 'familiar' },
-      { name: 'RabbitMQ', slug: 'rabbitmq', color: 'ff6600', level: 'familiar' },
+      { name: 'PostgreSQL', customIcon: '/logos/simple-icons/postgresql.svg', level: 'core' },
+      { name: 'MongoDB', customIcon: '/logos/simple-icons/mongodb.svg', level: 'familiar' },
+      { name: 'RabbitMQ', customIcon: '/logos/simple-icons/rabbitmq.svg', level: 'familiar' },
     ],
   },
   {
@@ -49,12 +48,12 @@ export const skills: SkillGroup[] = [
     items: [
       { name: 'Azure', customIcon: '/logos/azure.svg', level: 'advanced' },
       { name: 'AWS', customIcon: '/logos/aws.svg', level: 'advanced' },
-      { name: 'Docker', slug: 'docker', color: '2496ed', level: 'advanced' },
-      { name: 'Kubernetes', slug: 'kubernetes', color: '326ce5', level: 'advanced' },
-      { name: 'GitLab CI/CD', slug: 'gitlab', color: 'fc6d26', level: 'advanced' },
-      { name: 'Terraform', slug: 'terraform', color: '7b42bc', level: 'familiar' },
-      { name: 'Portainer', slug: 'portainer', color: '24a0a7', level: 'advanced' },
-      { name: 'ArgoCD', slug: 'argo', color: '5796eb', level: 'familiar' },
+      { name: 'Docker', customIcon: '/logos/simple-icons/docker.svg', level: 'advanced' },
+      { name: 'Kubernetes', customIcon: '/logos/simple-icons/kubernetes.svg', level: 'advanced' },
+      { name: 'GitLab CI/CD', customIcon: '/logos/simple-icons/gitlab.svg', level: 'advanced' },
+      { name: 'Terraform', customIcon: '/logos/simple-icons/terraform.svg', level: 'familiar' },
+      { name: 'Portainer', customIcon: '/logos/simple-icons/portainer.svg', level: 'advanced' },
+      { name: 'ArgoCD', customIcon: '/logos/simple-icons/argo.svg', level: 'familiar' },
     ],
   },
   {
@@ -68,10 +67,10 @@ export const skills: SkillGroup[] = [
       { name: 'OpenAI', customIcon: '/logos/openai.svg', level: 'core' },
       { name: 'Anthropic', customIcon: '/logos/anthropic.svg', level: 'core' },
       { name: 'LangChain', customIcon: '/logos/langchain.svg', level: 'familiar' },
-      { name: 'Jupyter', slug: 'jupyter', color: 'f37626', level: 'advanced' },
-      { name: 'Pandas', slug: 'pandas', color: '150458', level: 'familiar' },
-      { name: 'NumPy', slug: 'numpy', color: '013243', level: 'familiar' },
-      { name: 'MLflow', slug: 'mlflow', color: '000000', level: 'familiar' },
+      { name: 'Jupyter', customIcon: '/logos/simple-icons/jupyter.svg', level: 'advanced' },
+      { name: 'Pandas', customIcon: '/logos/simple-icons/pandas.svg', level: 'familiar' },
+      { name: 'NumPy', customIcon: '/logos/simple-icons/numpy.svg', level: 'familiar' },
+      { name: 'MLflow', customIcon: '/logos/simple-icons/mlflow.svg', level: 'familiar' },
     ],
   },
   {
@@ -81,14 +80,14 @@ export const skills: SkillGroup[] = [
       en: 'Tools',
     },
     items: [
-      { name: 'Git', slug: 'git', color: 'f05032', level: 'core' },
-      { name: 'GitHub', slug: 'github', color: 'f5f5f5', level: 'core' },
-      { name: 'GitLab', slug: 'gitlab', color: 'fc6d26', level: 'core' },
+      { name: 'Git', customIcon: '/logos/simple-icons/git.svg', level: 'core' },
+      { name: 'GitHub', customIcon: '/logos/simple-icons/github.svg', level: 'core' },
+      { name: 'GitLab', customIcon: '/logos/simple-icons/gitlab.svg', level: 'core' },
       { name: 'VS Code', customIcon: '/logos/vscode.svg', level: 'core' },
       { name: 'Visual Studio', customIcon: '/logos/visualstudio.svg', level: 'core' },
-      { name: 'JetBrains', slug: 'jetbrains', color: 'ff318c', level: 'core' },
-      { name: 'Postman', slug: 'postman', color: 'ff6c37', level: 'advanced' },
-      { name: 'Jira', slug: 'jira', color: '0052cc', level: 'advanced' },
+      { name: 'JetBrains', customIcon: '/logos/simple-icons/jetbrains.svg', level: 'core' },
+      { name: 'Postman', customIcon: '/logos/simple-icons/postman.svg', level: 'advanced' },
+      { name: 'Jira', customIcon: '/logos/simple-icons/jira.svg', level: 'advanced' },
     ],
   },
 ];

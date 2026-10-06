@@ -59,9 +59,9 @@ export class Home implements AfterViewInit, OnDestroy {
 
   constructor() {
     inject(SeoService).apply({
-      title: 'Alejandro Viñola — Full Stack Developer · IA · Arquitectura',
+      title: 'Alejandro Viñola — Senior Software Engineer · GenAI · Full Stack',
       description:
-        'Portfolio de Alejandro Viñola. Full Stack Developer (.NET · Angular · TypeScript) con foco en IA aplicada al desarrollo, arquitectura software y calidad.',
+        'Portfolio de Alejandro Viñola. Senior Software Engineer especializado en GenAI y agentes de IA, con base full stack en Java, .NET y Angular.',
       url: 'https://alexvinola.com',
     });
   }

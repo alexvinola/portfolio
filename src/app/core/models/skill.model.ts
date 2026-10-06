@@ -2,11 +2,7 @@ import { Localized } from './localized.model';
 
 export interface SkillItem {
   name: string;
-  /** Slug de simpleicons.org (https://cdn.simpleicons.org/{slug}/{color}). */
-  slug?: string;
-  /** Color HEX (sin #) para el logo de simpleicons. */
-  color?: string;
-  /** Ruta a un SVG/imagen local. Si está, sustituye al de simpleicons. */
+  /** Ruta a un SVG/imagen local en public. */
   customIcon?: string;
   level?: 'core' | 'advanced' | 'familiar';
 }

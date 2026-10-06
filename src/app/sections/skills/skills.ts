@@ -4,7 +4,6 @@ import { LocalizedPipe } from '../../core/pipes/localized.pipe';
 import { RevealDirective } from '../../core/directives/reveal.directive';
 import { SectionHeading } from '../../shared/ui/section-heading/section-heading';
 import { skills, conceptualSkills } from '../../core/data/skills.data';
-import { SkillItem } from '../../core/models/skill.model';
 
 @Component({
   selector: 'app-skills',
@@ -148,9 +147,9 @@ import { SkillItem } from '../../core/models/skill.model';
                 @for (item of group.items; track item.name) {
                   <div class="skill-item" [class.core]="item.level === 'core'" [title]="item.name">
                     <span class="skill-icon" aria-hidden="true">
-                      @if (hasIcon(item)) {
+                      @if (item.customIcon) {
                         <img
-                          [src]="iconUrl(item)"
+                          [src]="item.customIcon"
                           [alt]="item.name + ' logo'"
                           loading="lazy"
                           decoding="async"
@@ -192,16 +191,6 @@ import { SkillItem } from '../../core/models/skill.model';
 export class Skills {
   protected groups = skills;
   protected concepts = conceptualSkills;
-
-  protected iconUrl(item: SkillItem): string {
-    if (item.customIcon) return item.customIcon;
-    const color = item.color ? '/' + item.color : '';
-    return `https://cdn.simpleicons.org/${item.slug}${color}`;
-  }
-
-  protected hasIcon(item: SkillItem): boolean {
-    return !!(item.customIcon || item.slug);
-  }
 
   protected onIconError(e: Event): void {
     const img = e.target as HTMLImageElement;
